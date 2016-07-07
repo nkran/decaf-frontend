@@ -1,8 +1,8 @@
-import * as angular from 'angular';
+import {module} from 'angular';
 import './env';
 
 
-const app = angular.module('iloop', [
+const app = module('iloop', [
 	// Angular
 	'ngAnimate',
 	'ngAria',
@@ -14,7 +14,36 @@ app.component('app', {
 	bindings: {},
 	controller: AppController,
 	controllerAs: 'app',
-	template: `<h1>Hello!</h1>`
+	transclude: {
+		'navigation': '?appNavigation',
+		'header': 'appHeader'
+	},
+	template: `
+		<div layout="column">
+			<md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2">
+				<div ng-transclude="navigation"></div>
+				<md-list>	
+					<!--<md-list-item -->
+						<!--ng-repeat="extension in ::extensions"-->
+						<!--ui-sref="{{ extension.navigation.state }}">-->
+						<!--<md-icon>{{ extension.navigation.icon }}</md-icon>-->
+						<!--<p>{{ extension.navigation.label }}</p>-->
+					<!--</md-list-item>-->
+				</md-list>
+			</md-sidenav>
+			<div layout="column" flex id="content">
+				<md-toolbar>
+					<div class="md-toolbar-tools">
+						<h1 flex>
+							{{ app.module.name }}
+						</h1>
+						<div ng-transclude="header"></div>
+					</div>
+				</md-toolbar>
+				<md-content layout="column" ui-view="content" flex></md-content>
+			</div>
+		</div>
+	`
 });
 
 class AppController {

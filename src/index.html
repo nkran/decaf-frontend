@@ -10,9 +10,22 @@
 		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link href="./main.css" rel="stylesheet">
+		<style type="text/css">
+			[ng\:cloak],
+			[ng-cloak],
+			[data-ng-cloak],
+			[x-ng-cloak],
+			.ng-cloak,
+			.x-ng-cloak {
+				display: none !important;
+			}
+		</style>
 	</head>
-	<body>
-		<app></app>
+	<body ng-cloak>
+		<app>
+			<app-navigation>App nav. goes here</app-navigation>
+			<app-header>App header goes here</app-header>
+		</app>
 
 		<!-- ES6/Polyfills -->
 		<script src="jspm_packages/system.js"></script>

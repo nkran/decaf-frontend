@@ -1,10 +1,13 @@
-import * as angular from 'angular';
+import {
+	bootstrap,
+	element
+} from 'angular';
 import 'angular-material';
 import './app';
 
 
-angular.element(document).ready(() => {
-	angular.bootstrap(document.documentElement, ['iloop'], {
+element(document).ready(() => {
+	bootstrap(document.documentElement, ['iloop'], {
 		strictDi: false
 	});
 });
