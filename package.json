@@ -1,0 +1,48 @@
+{
+    "name": "iloop-platform",
+    "version": "0.0.0",
+    "description": "",
+    "keywords": [],
+    "homepage": "",
+    "license": "",
+    "author": {
+        "name": "Roland Groza",
+        "email": "rolandjitsu@gmail.com"
+    },
+    "main": "",
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "scripts": {
+        "start": "./node_modules/.bin/gulp"
+    },
+    "dependencies": {},
+    "devDependencies": {
+		"babel-core": "^6.9.1",
+		"babel-polyfill": "^6.9.1",
+		"babel-preset-es2015": "^6.9.0",
+		"babel-preset-stage-0": "^6.5.0",
+		"browser-sync": "^2.13.0",
+		"del": "^2.2.1",
+		"gulp": "gulpjs/gulp#4.0",
+		"gulp-autoprefixer": "^3.1.0",
+		"gulp-changed": "^1.3.0",
+		"gulp-plumber": "^1.1.0",
+		"gulp-size": "^2.1.0",
+		"gulp-sourcemaps": "^1.6.0",
+		"gulp-tslint": "^5.0.0",
+		"gulp-typescript": "^2.13.6",
+		"gulp-util": "^3.0.7",
+		"jspm": "beta",
+		"split2": "^2.1.0",
+		"through2": "^2.0.1",
+		"tslint": "next",
+		"typescript": "next",
+		"typings": "^1.3.0"
+    },
+    "engines": {
+        "node": "5.10.x"
+    },
+	"private": true
+}
