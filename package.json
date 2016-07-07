@@ -19,30 +19,100 @@
     },
     "dependencies": {},
     "devDependencies": {
-		"babel-core": "^6.9.1",
-		"babel-polyfill": "^6.9.1",
-		"babel-preset-es2015": "^6.9.0",
-		"babel-preset-stage-0": "^6.5.0",
-		"browser-sync": "^2.13.0",
-		"del": "^2.2.1",
-		"gulp": "gulpjs/gulp#4.0",
-		"gulp-autoprefixer": "^3.1.0",
-		"gulp-changed": "^1.3.0",
-		"gulp-plumber": "^1.1.0",
-		"gulp-size": "^2.1.0",
-		"gulp-sourcemaps": "^1.6.0",
-		"gulp-tslint": "^5.0.0",
-		"gulp-typescript": "^2.13.6",
-		"gulp-util": "^3.0.7",
-		"jspm": "beta",
-		"split2": "^2.1.0",
-		"through2": "^2.0.1",
-		"tslint": "next",
-		"typescript": "next",
-		"typings": "^1.3.0"
+        "babel-core": "^6.9.1",
+        "babel-polyfill": "^6.9.1",
+        "babel-preset-es2015": "^6.9.0",
+        "babel-preset-stage-0": "^6.5.0",
+        "browser-sync": "^2.13.0",
+        "del": "^2.2.1",
+        "gulp": "gulpjs/gulp#4.0",
+        "gulp-autoprefixer": "^3.1.0",
+        "gulp-changed": "^1.3.0",
+        "gulp-plumber": "^1.1.0",
+        "gulp-size": "^2.1.0",
+        "gulp-sourcemaps": "^1.6.0",
+        "gulp-tslint": "^5.0.0",
+        "gulp-typescript": "^2.13.6",
+        "gulp-util": "^3.0.7",
+        "jspm": "beta",
+        "through2": "^2.0.1",
+        "tslint": "next",
+        "typescript": "next",
+        "typings": "^1.3.0"
     },
     "engines": {
         "node": "5.10.x"
     },
-	"private": true
+    "jspm": {
+        "name": "iloop",
+        "main": "iloop.js",
+        "dependencies": {
+            "angular": "github:angular/bower-angular@^1.5.7",
+            "angular-material": "github:angular/bower-material@^1.0.9"
+        },
+        "devDependencies": {},
+        "overrides": {
+            "github:angular/bower-angular-animate@1.5.7": {
+                "main": "angular-animate",
+                "registry": "jspm",
+                "dependencies": {
+                    "angular": "^1.3.0"
+                },
+                "meta": {
+                    "angular-animate.js": {
+                        "deps": [
+                            "angular"
+                        ],
+                        "format": "global"
+                    }
+                }
+            },
+            "github:angular/bower-angular-aria@1.5.7": {
+                "main": "angular-aria",
+                "registry": "jspm",
+                "dependencies": {
+                    "angular": "^1.3.0"
+                },
+                "meta": {
+                    "angular-aria.js": {
+                        "deps": [
+                            "angular"
+                        ],
+                        "format": "global"
+                    }
+                }
+            },
+            "github:angular/bower-angular@1.5.7": {
+                "main": "angular",
+                "meta": {
+                    "angular.js": {
+                        "exports": "angular",
+                        "format": "global"
+                    }
+                }
+            },
+            "github:angular/bower-material@1.0.9": {
+                "main": "angular-material",
+                "registry": "jspm",
+                "dependencies": {
+                    "angular": "^1.5.0",
+                    "angular-animate": "^1.5.0",
+                    "angular-aria": "^1.5.0",
+                    "css": "^0.1.0"
+                },
+                "meta": {
+                    "angular-material.js": {
+                        "deps": [
+                            "./angular-material.css!",
+                            "angular",
+                            "angular-animate",
+                            "angular-aria"
+                        ],
+                        "format": "global"
+                    }
+                }
+            }
+        }
+    },
+    "private": true
 }

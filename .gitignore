@@ -49,3 +49,11 @@ node_modules
 
 ## JSPM
 jspm_packages
+
+
+## Distribution files
+dist
+
+
+## Typings
+typings
