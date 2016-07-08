@@ -1,7 +1,7 @@
 import {module} from 'angular';
 import 'angular-material';
 import 'angular-ui-router';
-import './env';
+import {isProd} from './env';
 
 
 const app = module('iloop', [
@@ -24,6 +24,13 @@ app.config(function ($mdThemingProvider) {
 
 
 // Main component
+class AppController {
+	constructor() {}
+	$onInit() {
+		console.log(`App running in ${isProd() ? 'production' : 'dev'} mode.`)
+	}
+}
+
 app.component('app', {
 	bindings: {},
 	controller: AppController,
@@ -37,12 +44,12 @@ app.component('app', {
 			<md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2">
 				<div ng-transclude="navigation"></div>
 				<md-list>	
-					<!--<md-list-item -->
-						<!--ng-repeat="extension in ::extensions"-->
-						<!--ui-sref="{{ extension.navigation.state }}">-->
-						<!--<md-icon>{{ extension.navigation.icon }}</md-icon>-->
-						<!--<p>{{ extension.navigation.label }}</p>-->
-					<!--</md-list-item>-->
+					<md-list-item 
+						ng-repeat="extension in ::app.extensions"
+						ui-sref="{{ extension.navigation.state }}">
+						<md-icon>{{ extension.navigation.icon }}</md-icon>
+						<p>{{ extension.navigation.label }}</p>
+					</md-list-item>
 				</md-list>
 			</md-sidenav>
 			<div layout="column" flex id="content">
@@ -59,11 +66,6 @@ app.component('app', {
 		</div>
 	`
 });
-
-class AppController {
-	constructor() {
-	}
-}
 
 
 export default app;
