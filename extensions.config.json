@@ -1,0 +1,18 @@
+{
+	"github:biosustain/iloop-extension-visualization": {
+		"moduleName": "visualization",
+		"navigation": {
+			"state": "project.visualization.box-whiskers",
+			"label": "Visualization",
+			"icon": "insert_chart"
+		}
+	},
+	"github:biosustain/iloop-extension-variants": {
+		"moduleName": "variants",
+		"navigation": {
+			"state": "project.variants",
+			"label": "Variant Browser",
+			"icon": "compare"
+		}
+	}
+}

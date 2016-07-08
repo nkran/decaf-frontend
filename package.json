@@ -35,6 +35,7 @@
         "gulp-typescript": "^2.13.6",
         "gulp-util": "^3.0.7",
         "jspm": "beta",
+		"split2": "2.0.x",
         "through2": "^2.0.1",
         "tslint": "next",
         "typescript": "next",
