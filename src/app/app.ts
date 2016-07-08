@@ -10,6 +10,16 @@ const app = module('iloop', [
 ]);
 
 
+// App configuration
+app.config(function ($mdThemingProvider) {
+	$mdThemingProvider
+		.theme('default')
+		.primaryPalette('blue-grey')
+		.accentPalette('grey');
+});
+
+
+// Main component
 app.component('app', {
 	bindings: {},
 	controller: AppController,
