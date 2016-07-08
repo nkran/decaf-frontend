@@ -7,7 +7,6 @@ SystemJS.config({
 	browserConfig: {
 		"baseURL": "/"
 	},
-	devConfig: {},
 	productionConfig: {},
 	packages: {
 		"app": {
@@ -26,7 +25,8 @@ SystemJS.config({
 	],
 	map: {
 		"angular": "github:angular/bower-angular@1.5.7",
-		"angular-material": "github:angular/bower-material@1.0.9"
+		"angular-material": "github:angular/bower-material@1.0.9",
+		"angular-ui-router": "github:angular-ui/angular-ui-router-bower@0.3.1"
 	},
 	packages: {
 		"github:angular/bower-material@1.0.9": {
@@ -43,6 +43,11 @@ SystemJS.config({
 			}
 		},
 		"github:angular/bower-angular-animate@1.5.7": {
+			"map": {
+				"angular": "github:angular/bower-angular@1.5.7"
+			}
+		},
+		"github:angular-ui/angular-ui-router-bower@0.3.1": {
 			"map": {
 				"angular": "github:angular/bower-angular@1.5.7"
 			}

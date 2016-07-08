@@ -2,7 +2,6 @@ import {
 	bootstrap,
 	element
 } from 'angular';
-import 'angular-material';
 import './app';
 
 

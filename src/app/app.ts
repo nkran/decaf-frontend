@@ -1,4 +1,6 @@
 import {module} from 'angular';
+import 'angular-material';
+import 'angular-ui-router';
 import './env';
 
 
@@ -6,7 +8,9 @@ const app = module('iloop', [
 	// Angular
 	'ngAnimate',
 	'ngAria',
-	'ngMaterial'
+	'ngMaterial',
+	// 3rd Party
+	'ui.router'
 ]);
 
 
