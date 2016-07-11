@@ -216,39 +216,39 @@ gulp.task('build/app', gulp.parallel(
 
 
 /**
- * Build extensions
+ * Build modules
  * Note that, before running this task, `build/deps` must be run.
  */
-gulp.task('build/extensions', gulp.series(
+gulp.task('build/modules', gulp.series(
 	// Build configuration
 	function config(done) {
 		let paths = new Map();
-		let extensionsConfig = [];
+		let modulesConfig = [];
 
 		let stream = gulp
-			.src('./extensions.config.json')
+			.src('./modules.config.json')
 			.pipe(plumber())
 			.pipe(through.obj(
-				// Build an extensions config object based on the extensions json configuration:
-				// 1. Read the contents of the extensions json config
-				// 2. Build the extensions config object
+				// Build a modules config object based on the modules json configuration:
+				// 1. Read the contents of the modules json config
+				// 2. Build the modules config object
 				(file, enc, cb) => {
 					let contents = readFileSync(file.path);
 					let configs = JSON.parse(contents);
 
-					for (let extension of Object.keys(configs)) {
-						let {name, path} = parseExtension(extension);
-						// Get extension config
-						extensionsConfig.push(configs[extension]);
-						// Set list of extensions
+					for (let module of Object.keys(configs)) {
+						let {name, path} = parseModule(module);
+						// Get module config
+						modulesConfig.push(configs[module]);
+						// Set list of modules
 						paths.set(name, path);
 					}
 
 					cb();
 				},
-				// Based on the extensions config from the above step, build a config file to be used by the app:
+				// Based on the modules config from the above step, build a config file to be used by the app:
 				// 1. Add import for each package
-				// 2. Add the extensions config object as a constant export
+				// 2. Add the modules config object as a constant export
 				// 3. Append all to the config file
 				function (cb) {
 					let contents = '';
@@ -256,13 +256,13 @@ gulp.task('build/extensions', gulp.series(
 					for (let name of paths.keys()) {
 						contents += `import '${name}';\n`;
 					}
-					contents += `\nconst EXTENSIONS_CONFIG = ${JSON.stringify(extensionsConfig, null, 4)};\n`;
-					contents += '\nexport default EXTENSIONS_CONFIG;';
+					contents += `\nconst MODULES_CONFIG = ${JSON.stringify(modulesConfig, null, 4)};\n`;
+					contents += '\nexport default MODULES_CONFIG ;';
 
 					this.push(
 						new File({
 							contents: new Buffer(contents),
-							path: 'extensions.config.ts'
+							path: 'modules.config.ts'
 						})
 					);
 
@@ -280,20 +280,20 @@ gulp.task('build/extensions', gulp.series(
 			.pipe(gulp.dest(PATHS.dist));
 
 		stream.on('end', () => {
-			del([`${PATHS.dist}/extensions.config.ts`]).then(() => {
+			del([`${PATHS.dist}/modules.config.ts`]).then(() => {
 				done();
 			});
 		});
 	},
-	// Install each extension as a jspm package
+	// Install each module as a jspm package
 	function install() {
-		let contents = readFileSync('./extensions.config.json');
+		let contents = readFileSync('./modules.config.json');
 		let json = JSON.parse(contents);
 		let proc;
 
 		let packages = '';
-		for (let extension of Object.keys(json)) {
-			let {name, path} = parseExtension(extension);
+		for (let module of Object.keys(json)) {
+			let {name, path} = parseModule(module);
 			packages += `${name}=${path} `;
 		}
 
@@ -310,13 +310,13 @@ gulp.task('build/extensions', gulp.series(
 	}
 ));
 
-function parseExtension(extension) {
+function parseModule(module) {
 	let name;
 
-	if (extension.indexOf('@') !== -1) {
-		name = extension.substr(0, extension.indexOf('@'));
+	if (module.indexOf('@') !== -1) {
+		name = module.substr(0, module.indexOf('@'));
 	} else {
-		name = extension;
+		name = module;
 	}
 
 	if (name.indexOf(':') !== -1) {
@@ -325,7 +325,7 @@ function parseExtension(extension) {
 
 	return {
 		name,
-		path: extension
+		path: module
 	};
 }
 
@@ -335,7 +335,7 @@ function parseExtension(extension) {
  */
 gulp.task('build', gulp.series(
 	'build/deps',
-	'build/extensions',
+	'build/modules',
 	'build/app'
 ));
 

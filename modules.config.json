@@ -1,6 +1,6 @@
 {
 	"github:biosustain/iloop-extension-visualization": {
-		"moduleName": "visualization",
+		"name": "visualization",
 		"navigation": {
 			"state": "project.visualization.box-whiskers",
 			"label": "Visualization",
@@ -8,7 +8,7 @@
 		}
 	},
 	"github:biosustain/iloop-extension-variants": {
-		"moduleName": "variants",
+		"name": "variants",
 		"navigation": {
 			"state": "project.variants",
 			"label": "Variant Browser",
