@@ -51,7 +51,7 @@ app.component('app', {
 			<md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
 				<div ng-transclude="navigation"></div>
 				<md-list>
-					<md-list-item ng-repeat="module in ::app.modules">
+					<md-list-item ng-repeat="module in ::app.modules" ui-sref="{{module.navigation.state}}">
 						<md-icon>{{ module.navigation.icon }}</md-icon>
 						<p>{{ module.navigation.label }}</p>
 					</md-list-item>
