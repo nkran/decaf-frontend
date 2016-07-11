@@ -1,27 +1,22 @@
-// TODO: see if you can use ES6 without babel (just with node which supports ES6)
-// Add unsupported ES6/7 methods
-// Must be before everything else
-import 'babel-polyfill';
+const {create} = require('browser-sync');
+const {exec} = require('child_process');
+const del = require('del');
+const {readFileSync} = require('fs');
+const gulp = require('gulp');
+const autoprefixer = require('gulp-autoprefixer');
+const changed = require('gulp-changed');
+const plumber = require('gulp-plumber');
+const size = require('gulp-size');
+const sourcemaps = require('gulp-sourcemaps');
+const tslint = require('gulp-tslint');
+const typescript = require('gulp-typescript');
+const {env, log, File} = require('gulp-util');
+const jspm = require('jspm');
+const jspmConfig = require('jspm/lib/config');
+const split = require('split2');
+const through = require('through2');
 
-import {create as createBrowserSyncServer} from 'browser-sync';
-import {exec} from 'child_process';
-import del from 'del';
-import {readFileSync} from 'fs';
-import gulp from 'gulp';
-import autoprefixer from 'gulp-autoprefixer';
-import changed from 'gulp-changed';
-import plumber from 'gulp-plumber';
-import size from 'gulp-size';
-import sourcemaps from 'gulp-sourcemaps';
-import tslint from 'gulp-tslint';
-import typescript from 'gulp-typescript';
-import {env, log, File} from 'gulp-util';
-import jspm from 'jspm';
-import jspmConfig from 'jspm/lib/config';
-import split from 'split2';
-import through from 'through2';
-
-const bs = createBrowserSyncServer('iLoop');
+const bs = create('iLoop');
 
 const BS_CONFIG = require('./bs.config');
 const GULP_SIZE_DEFAULT_CONFIG = {

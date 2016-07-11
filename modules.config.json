@@ -1,18 +1,10 @@
 {
-	"github:biosustain/iloop-extension-visualization": {
-		"name": "visualization",
+	"github:biosustain/decaf-frontend-module-example": {
+		"name": "example",
 		"navigation": {
-			"state": "project.visualization.box-whiskers",
-			"label": "Visualization",
+			"state": "",
+			"label": "Example",
 			"icon": "insert_chart"
-		}
-	},
-	"github:biosustain/iloop-extension-variants": {
-		"name": "variants",
-		"navigation": {
-			"state": "project.variants",
-			"label": "Variant Browser",
-			"icon": "compare"
 		}
 	}
 }
