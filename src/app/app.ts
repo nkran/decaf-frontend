@@ -2,16 +2,22 @@ import {module} from 'angular';
 import 'angular-material';
 import 'angular-ui-router';
 import {isProd} from './env';
+import MODULES_CONFIG from 'src/modules.config';
 
 
-const app = module('iloop', [
+const CORE_COMPONENTS = [
 	// Angular
 	'ngAnimate',
 	'ngAria',
 	'ngMaterial',
 	// 3rd Party
 	'ui.router'
-]);
+];
+
+const app = module('iloop', [].concat(
+	CORE_COMPONENTS,
+	MODULES_CONFIG.map((module) => module.name)
+));
 
 
 // App configuration
@@ -25,6 +31,7 @@ app.config(function ($mdThemingProvider) {
 
 // Main component
 class AppController {
+	modules: any[] = MODULES_CONFIG;
 	constructor() {}
 	$onInit() {
 		console.info(`App running in ${isProd() ? 'production' : 'dev'} mode.`);

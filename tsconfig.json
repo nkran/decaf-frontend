@@ -6,7 +6,11 @@
 		"moduleResolution": "node",
 		"noImplicitAny": false,
 		"sourceMap": true,
-		"target": "es5"
+		"target": "es5",
+		"baseUrl": ".",
+		"paths": {
+			"src/*": ["src/*"]
+		}
 	},
 	"files": [
 		"typings/index.d.ts"

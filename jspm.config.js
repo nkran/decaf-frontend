@@ -5,7 +5,10 @@ SystemJS.config({
 		"github:": "jspm_packages/github/"
 	},
 	browserConfig: {
-		"baseURL": "/"
+		"baseURL": "/",
+		"map": {
+			"src/modules.config": "./modules.config.js"
+		}
 	},
 	productionConfig: {},
 	packages: {
