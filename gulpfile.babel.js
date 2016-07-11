@@ -221,11 +221,11 @@ gulp.task('build/app', gulp.parallel(
  */
 gulp.task('build/extensions', gulp.series(
 	// Build configuration
-	function config() {
+	function config(done) {
 		let paths = new Map();
 		let extensionsConfig = [];
 
-		return gulp
+		let stream = gulp
 			.src('./extensions.config.json')
 			.pipe(plumber())
 			.pipe(through.obj(
@@ -259,7 +259,6 @@ gulp.task('build/extensions', gulp.series(
 					contents += `\nconst EXTENSIONS_CONFIG = ${JSON.stringify(extensionsConfig, null, 4)};\n`;
 					contents += '\nexport default EXTENSIONS_CONFIG;';
 
-					// console.log(paths, contents)
 					this.push(
 						new File({
 							contents: new Buffer(contents),
@@ -270,29 +269,44 @@ gulp.task('build/extensions', gulp.series(
 					cb();
 				}
 			))
+			// TS needs a physical location for the files,
+			// thus the below save in dist.
+			.pipe(gulp.dest(PATHS.dist))
 			.pipe(typescript(typescript.createProject('tsconfig.json', {
 				typescript: require('typescript')
 			})))
+			.js
+			.pipe(size(GULP_SIZE_DEFAULT_CONFIG))
 			.pipe(gulp.dest(PATHS.dist));
+
+		stream.on('end', () => {
+			del([`${PATHS.dist}/extensions.config.ts`]).then(() => {
+				done();
+			});
+		});
 	},
 	// Install each extension as a jspm package
-	async function install(done) {
+	function install() {
 		let contents = readFileSync('./extensions.config.json');
 		let json = JSON.parse(contents);
+		let proc;
 
-		// Set JSPM config path
-		jspm.setPackagePath(PATHS.dist);
-
+		let packages = '';
 		for (let extension of Object.keys(json)) {
 			let {name, path} = parseExtension(extension);
-			try {
-				await jspm.install(name, path);
-			} catch (e) {
-				done(e);
-			}
+			packages += `${name}=${path} `;
 		}
 
-		done();
+		proc = exec(`${__dirname}/node_modules/.bin/jspm install ${packages}`, {cwd: PATHS.dist});
+
+		proc.stdout
+			.pipe(split())
+			.on('data', (data) => log(data));
+		proc.stderr
+			.pipe(split())
+			.on('data', (data) => log(data));
+
+		return proc;
 	}
 ));
 
