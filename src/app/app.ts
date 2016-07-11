@@ -47,15 +47,13 @@ app.component('app', {
 		'header': 'appHeader'
 	},
 	template: `
-		<div layout="column">
-			<md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2">
+		<div layout="row" flex>
+			<md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
 				<div ng-transclude="navigation"></div>
-				<md-list>	
-					<md-list-item 
-						ng-repeat="extension in ::app.extensions"
-						ui-sref="{{ extension.navigation.state }}">
-						<md-icon>{{ extension.navigation.icon }}</md-icon>
-						<p>{{ extension.navigation.label }}</p>
+				<md-list>
+					<md-list-item ng-repeat="module in ::app.modules">
+						<md-icon>{{ module.navigation.icon }}</md-icon>
+						<p>{{ module.navigation.label }}</p>
 					</md-list-item>
 				</md-list>
 			</md-sidenav>

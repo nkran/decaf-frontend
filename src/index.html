@@ -21,9 +21,15 @@
 			}
 		</style>
 	</head>
-	<body ng-cloak>
-		<app>
-			<app-navigation>App nav. goes here</app-navigation>
+	<body layout="column" ng-cloak>
+		<app layout="column" flex>
+			<app-navigation>
+				<md-list>
+					<md-list-item>
+						An app navigation item
+					</md-list-item>
+				</md-list>
+			</app-navigation>
 			<app-header>App header goes here</app-header>
 		</app>
 
