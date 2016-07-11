@@ -208,7 +208,6 @@ gulp.task('build/css', function () {
  * App builds
  */
 gulp.task('build/app', gulp.parallel(
-	'build/deps',
 	'build/static',
 	'build/html',
 	'build/js',

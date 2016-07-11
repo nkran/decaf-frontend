@@ -27,7 +27,7 @@ app.config(function ($mdThemingProvider) {
 class AppController {
 	constructor() {}
 	$onInit() {
-		console.log(`App running in ${isProd() ? 'production' : 'dev'} mode.`)
+		console.info(`App running in ${isProd() ? 'production' : 'dev'} mode.`);
 	}
 }
 
