@@ -80,13 +80,13 @@ app.component('app', {
 			<div layout="column" flex id="content">
 				<md-toolbar>
 					<div class="md-toolbar-tools">
-						<h1 flex>
-							{{ app.module.name }}
-						</h1>
 						<div ng-transclude="header"></div>
 					</div>
 				</md-toolbar>
-				<md-content layout="column" ui-view="content" flex></md-content>
+				<md-content layout="column"
+							ui-view="content"
+							flex>
+				</md-content>
 			</div>
 		</div>
 	`
