@@ -1,8 +1,8 @@
 import {module} from 'angular';
 import 'angular-material';
 import 'angular-ui-router';
+import MODULES_CONFIG from 'modules.config';
 import {isProd} from './env';
-import MODULES_CONFIG from 'src/modules.config';
 
 
 const CORE_COMPONENTS = [

@@ -7,7 +7,7 @@ SystemJS.config({
 	browserConfig: {
 		"baseURL": "/",
 		"map": {
-			"src/modules.config": "./modules.config.js"
+			"modules.config": "./modules.config.js"
 		}
 	},
 	productionConfig: {},
