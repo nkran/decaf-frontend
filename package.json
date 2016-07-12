@@ -31,20 +31,21 @@
         "gulp-typescript": "^2.13.6",
         "gulp-util": "^3.0.7",
         "jspm": "beta",
-		"split2": "2.0.x",
+        "split2": "2.0.x",
         "through2": "^2.0.1",
         "tslint": "next",
         "typescript": "next",
         "typings": "^1.3.0"
     },
     "engines": {
-		"node": ">= 6.3"
+        "node": ">= 6.3"
     },
     "jspm": {
         "dependencies": {
             "angular": "github:angular/bower-angular@^1.5.7",
             "angular-material": "github:angular/bower-material@^1.0.9",
-            "angular-ui-router": "github:angular-ui/angular-ui-router-bower@^0.3.1"
+            "angular-ui-router": "github:angular-ui/angular-ui-router-bower@^0.3.1",
+            "css": "github:systemjs/plugin-css@^0.1.23"
         },
         "devDependencies": {},
         "overrides": {

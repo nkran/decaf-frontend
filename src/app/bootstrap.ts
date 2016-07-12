@@ -2,11 +2,11 @@ import {
 	bootstrap,
 	element
 } from 'angular';
-import './app';
+import app from './app';
 
 
 element(document).ready(() => {
-	bootstrap(document.documentElement, ['iloop'], {
+	bootstrap(document.documentElement, [app.name], {
 		strictDi: false
 	});
 });

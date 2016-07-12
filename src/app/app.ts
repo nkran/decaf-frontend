@@ -2,7 +2,10 @@ import {module} from 'angular';
 import 'angular-material';
 import 'angular-ui-router';
 import MODULES_CONFIG from 'modules.config';
+
 import {isProd} from './env';
+
+import home from './components/home/home';
 
 
 const CORE_COMPONENTS = [
@@ -14,18 +17,35 @@ const CORE_COMPONENTS = [
 	'ui.router'
 ];
 
-const app = module('iloop', [].concat(
+const APP_COMPONENTS = [
+	home.name
+];
+
+const app = module('platform', [].concat(
 	CORE_COMPONENTS,
+	APP_COMPONENTS,
 	MODULES_CONFIG.map((module) => module.name)
 ));
 
 
-// App configuration
+// AM theme config
 app.config(function ($mdThemingProvider) {
 	$mdThemingProvider
 		.theme('default')
 		.primaryPalette('blue-grey')
 		.accentPalette('grey');
+});
+
+// Router config
+app.config(function ($urlMatcherFactoryProvider, $stateProvider) {
+	// Optional slash
+	$urlMatcherFactoryProvider.strictMode(false);
+
+	// Root state
+	$stateProvider.state('root', {
+		url: '',
+		abstract: true
+	});
 });
 
 

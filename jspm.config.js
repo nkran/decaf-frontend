@@ -1,16 +1,15 @@
 SystemJS.config({
 	production: false,
+	productionConfig: {},
+	browserConfig: {
+		"baseURL": "/"
+	},
 	paths: {
-		"app/": "app/",
 		"github:": "jspm_packages/github/"
 	},
-	browserConfig: {
-		"baseURL": "/",
-		"map": {
-			"modules.config": "./modules.config.js"
-		}
+	map: {
+		"modules.config": "./modules.config.js"
 	},
-	productionConfig: {},
 	packages: {
 		"app": {
 			"map": {
@@ -27,6 +26,7 @@ SystemJS.config({
 		"github:*/*.json"
 	],
 	map: {
+		"css": "github:systemjs/plugin-css@0.1.23",
 		"angular": "github:angular/bower-angular@1.5.7",
 		"angular-material": "github:angular/bower-material@1.0.9",
 		"angular-ui-router": "github:angular-ui/angular-ui-router-bower@0.3.1"
