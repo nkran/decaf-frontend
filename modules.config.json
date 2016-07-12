@@ -2,7 +2,7 @@
 	"github:biosustain/decaf-frontend-module-example": {
 		"name": "example",
 		"navigation": {
-			"state": "example",
+			"state": "root.example",
 			"label": "Example",
 			"icon": "insert_chart"
 		}
