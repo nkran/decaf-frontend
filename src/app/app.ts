@@ -70,6 +70,7 @@ app.component('app', {
 		<div layout="row" flex>
 			<md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
 				<div ng-transclude="navigation"></div>
+				<div ui-view="navigation"></div>
 				<md-list>
 					<md-list-item ng-repeat="module in ::app.modules" ui-sref="{{module.navigation.state}}">
 						<md-icon>{{ module.navigation.icon }}</md-icon>
@@ -80,6 +81,9 @@ app.component('app', {
 			<div layout="column" flex id="content">
 				<md-toolbar>
 					<div class="md-toolbar-tools">
+						<h1 flex>
+							TODO
+						</h1>
 						<div ng-transclude="header"></div>
 					</div>
 				</md-toolbar>
