@@ -21,7 +21,9 @@ home.config(function ($stateProvider) {
 
 
 class HomeController {
-	constructor() {}
+	constructor() {
+		console.log('tada');
+	}
 }
 
 export default home;

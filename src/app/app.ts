@@ -6,6 +6,7 @@ import MODULES_CONFIG from 'modules.config';
 import {isProd} from './env';
 
 import home from './components/home/home';
+import login from './components/login/login';
 
 
 const CORE_COMPONENTS = [
@@ -18,7 +19,8 @@ const CORE_COMPONENTS = [
 ];
 
 const APP_COMPONENTS = [
-	home.name
+	home.name,
+	login.name
 ];
 
 const app = module('platform', [].concat(
@@ -67,7 +69,7 @@ app.component('app', {
 		'header': 'appHeader'
 	},
 	template: `
-		<div layout="row" flex>
+		<div layout="row" flex ui-view="root">
 			<md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
 				<div ng-transclude="navigation"></div>
 				<div ui-view="navigation"></div>
