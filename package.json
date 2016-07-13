@@ -33,8 +33,8 @@
         "jspm": "beta",
         "split2": "2.0.x",
         "through2": "^2.0.1",
-        "tslint": "next",
-        "typescript": "next",
+        "tslint": "^3.13.0",
+        "typescript": "^2.0.0-beta",
         "typings": "^1.3.0"
     },
     "engines": {
