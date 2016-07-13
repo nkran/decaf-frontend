@@ -9,7 +9,7 @@
 		"target": "es5",
 		"baseUrl": ".",
 		"paths": {
-			"decaf-common/*": ["jspm_packages/npm/decaf-common@0.0.2/*"],
+			"decaf-common/*": ["jspm_packages/npm/decaf-common@0.0.4/*"],
 			"app/*": ["src/app/*"]
 		}
 	},
