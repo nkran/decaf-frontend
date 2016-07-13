@@ -87,6 +87,7 @@ app.component('app', {
 				<md-toolbar>
 					<div class="md-toolbar-tools">
 						<h1 flex>
+							<!-- TODO: show current selected module name here -->
 							TODO
 						</h1>
 						<div ng-transclude="header"></div>
