@@ -5,7 +5,8 @@ SystemJS.config({
 		"baseURL": "/"
 	},
 	paths: {
-		"github:": "jspm_packages/github/"
+		"github:": "jspm_packages/github/",
+		"npm:": "jspm_packages/npm/"
 	},
 	map: {
 		"modules.config": "./modules.config.js"
@@ -23,10 +24,12 @@ SystemJS.config({
 
 SystemJS.config({
 	packageConfigPaths: [
-		"github:*/*.json"
+		"github:*/*.json",
+		"npm:@*/*.json",
+		"npm:*.json"
 	],
 	map: {
-		"decaf-common": "github:biosustain/decaf-frontend-common@master",
+		"decaf-common": "npm:decaf-common@0.0.2",
 		"css": "github:systemjs/plugin-css@0.1.23",
 		"angular": "github:angular/bower-angular@1.5.7",
 		"angular-material": "github:angular/bower-material@1.0.9",

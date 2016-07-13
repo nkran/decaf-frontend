@@ -42,13 +42,15 @@
     },
     "jspm": {
         "dependencies": {
-            "angular": "github:angular/bower-angular@^1.5.7",
             "angular-material": "github:angular/bower-material@^1.0.9",
-            "angular-ui-router": "github:angular-ui/angular-ui-router-bower@^0.3.1",
             "css": "github:systemjs/plugin-css@^0.1.23",
-            "decaf-common": "github:biosustain/decaf-frontend-common@master"
+            "decaf-common": "npm:decaf-common@^0.0.2"
         },
         "devDependencies": {},
+        "peerDependencies": {
+            "angular": "github:angular/bower-angular@^1.5.7",
+            "angular-ui-router": "github:angular-ui/angular-ui-router-bower@^0.3.1"
+        },
         "overrides": {
             "github:angular-ui/angular-ui-router-bower@0.3.1": {
                 "dependencies": {

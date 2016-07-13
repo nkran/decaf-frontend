@@ -1,6 +1,7 @@
 import {module} from 'angular';
 import 'angular-material';
 import 'angular-ui-router';
+import sharing from 'decaf-common/sharing';
 import MODULES_CONFIG from 'modules.config';
 
 import {isProd} from './env';
@@ -15,7 +16,9 @@ const CORE_COMPONENTS = [
 	'ngAria',
 	'ngMaterial',
 	// 3rd Party
-	'ui.router'
+	'ui.router',
+	// Biosustain
+	sharing.name
 ];
 
 const APP_COMPONENTS = [
