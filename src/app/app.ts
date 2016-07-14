@@ -110,7 +110,7 @@ app.component('app', {
 			</md-sidenav>
 			<div layout="column" flex id="content">
 				<md-toolbar>
-					<div class="md-toolbar-tools">
+					<div class="md-toolbar-tools" ui-view="toolbar">
 						<h1 flex>
 							{{app.module.navigation.label}}
 						</h1>
