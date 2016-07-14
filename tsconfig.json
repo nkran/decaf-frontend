@@ -9,7 +9,7 @@
 		"target": "es5",
 		"baseUrl": ".",
 		"paths": {
-			"decaf-common/*": ["jspm_packages/github/biosustain/decaf-common@master/*"],
+			"decaf-common": ["jspm_packages/github/biosustain/decaf-frontend-common@master/dist"],
 			"app/*": ["src/app/*"]
 		}
 	},
