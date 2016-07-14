@@ -94,7 +94,7 @@ app.component('app', {
 	controllerAs: 'app',
 	transclude: {
 		'navigation': '?appNavigation',
-		'header': 'appToolbar'
+		'toolbar': 'appToolbar'
 	},
 	template: `
 		<div layout="row" flex ui-view="root">
