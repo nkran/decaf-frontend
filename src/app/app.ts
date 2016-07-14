@@ -71,6 +71,7 @@ class AppController {
 		// Set title
 		// 1. Set document title
 		// 2. Set toolbar title
+		// 3. Set app color
 		$rootScope.$on('$stateChangeSuccess', (previousRoute, currentRoute) => {
 			let {module = null} = currentRoute.data || {};
 			if (module) {
