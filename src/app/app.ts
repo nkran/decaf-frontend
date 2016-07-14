@@ -82,6 +82,8 @@ class AppController {
 					this.color = color;
 				}
 			} else {
+				$window.document.title = 'Platform';
+				this.module = null;
 				this.color = null;
 			}
 		});
