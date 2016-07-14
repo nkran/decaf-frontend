@@ -1,7 +1,7 @@
 import {module} from 'angular';
 import 'angular-material';
 import 'angular-ui-router';
-import sharing from 'decaf-common/sharing';
+import sharing from 'decaf-common';
 import MODULES_CONFIG from 'modules.config';
 
 import {isProd} from './env';

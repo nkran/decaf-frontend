@@ -29,7 +29,7 @@ SystemJS.config({
 		"npm:*.json"
 	],
 	map: {
-		"decaf-common": "npm:decaf-common@0.0.4",
+		"decaf-common": "github:biosustain/decaf-frontend-common@master",
 		"css": "github:systemjs/plugin-css@0.1.23",
 		"angular": "github:angular/bower-angular@1.5.7",
 		"angular-material": "github:angular/bower-material@1.0.9",

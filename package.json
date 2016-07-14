@@ -44,7 +44,7 @@
         "dependencies": {
             "angular-material": "github:angular/bower-material@^1.0.9",
             "css": "github:systemjs/plugin-css@^0.1.23",
-            "decaf-common": "npm:decaf-common@^0.0.4"
+            "decaf-common": "github:biosustain/decaf-frontend-common@master"
         },
         "devDependencies": {},
         "peerDependencies": {
