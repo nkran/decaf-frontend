@@ -94,7 +94,7 @@ app.component('app', {
 	controllerAs: 'app',
 	transclude: {
 		'navigation': '?appNavigation',
-		'header': 'appHeader'
+		'header': 'appToolbar'
 	},
 	template: `
 		<div layout="row" flex ui-view="root">
@@ -114,7 +114,7 @@ app.component('app', {
 						<h1 flex>
 							{{app.module.navigation.label}}
 						</h1>
-						<div ng-transclude="header"></div>
+						<div ng-transclude="toolbar"></div>
 					</div>
 				</md-toolbar>
 				<md-content layout="column"
