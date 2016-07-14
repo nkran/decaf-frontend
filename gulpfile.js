@@ -106,6 +106,12 @@ gulp.task('jspm/install', function () {
 		.pipe(split())
 		.on('data', (data) => log(data));
 
+	proc.on('close', () => {
+		// Reload the browser.
+		// Only when BS is running.
+		bs.reload('jspm.config.js');
+	});
+
 	return proc;
 });
 
@@ -301,6 +307,12 @@ gulp.task('build/modules', gulp.series(
 			.pipe(split())
 			.on('data', (data) => log(data));
 
+		proc.on('close', () => {
+			// Reload the browser.
+			// Only when BS is running.
+			bs.reload('modules.config.json');
+		});
+
 		return proc;
 	}
 ));
@@ -363,6 +375,8 @@ gulp.task('serve', gulp.series(
 	'build',
 	function start() {
 		// Start watching files for changes
+		gulp.watch('jspm.config.js', gulp.task('build/deps'));
+		gulp.watch('modules.config.json', gulp.task('build/modules'));
 		gulp.watch(PATHS.src.ts, gulp.task('build/js'));
 		gulp.watch(PATHS.src.static, gulp.task('build/static'));
 		gulp.watch(PATHS.src.css, gulp.task('build/css'));
