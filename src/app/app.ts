@@ -57,9 +57,27 @@ app.config(function ($urlMatcherFactoryProvider, $stateProvider) {
 // Main component
 class AppController {
 	modules: any[] = MODULES_CONFIG;
-	constructor() {}
+	module: any = null;
+	constructor($rootScope, $window) {
+		// Set title
+		// 1. Set document title
+		// 2. Set toolbar title
+		$rootScope.$on('$stateChangeSuccess', (previousRoute, currentRoute) => {
+			let {module = null} = currentRoute.data || {};
+			console.log(module)
+			if (module) {
+				this.module = MODULES_CONFIG.find(({name}) => name === module);
+				if (this.module) {
+					let {label }= this.module.navigation;
+					$window.document.title = `Platform – ${label}`;
+				}
+			}
+		});
+	}
 	$onInit() {
-		console.info(`App running in ${isProd() ? 'production' : 'dev'} mode.`);
+		console.info(`App running in ${
+			isProd() ? 'production' : 'dev'
+		} mode.`);
 	}
 }
 
@@ -87,8 +105,7 @@ app.component('app', {
 				<md-toolbar>
 					<div class="md-toolbar-tools">
 						<h1 flex>
-							<!-- TODO: show current selected module name here -->
-							TODO
+							{{app.module.navigation.label}}
 						</h1>
 						<div ng-transclude="header"></div>
 					</div>
