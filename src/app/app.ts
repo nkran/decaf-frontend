@@ -66,6 +66,7 @@ app.config(function ($urlMatcherFactoryProvider, $stateProvider) {
 class AppController {
 	modules: any[] = MODULES_CONFIG;
 	module: any = null;
+	color: string | null;
 	constructor($rootScope, $window, modulesConfig) {
 		// Set title
 		// 1. Set document title
@@ -75,9 +76,13 @@ class AppController {
 			if (module) {
 				this.module = modulesConfig.configForModule(module);
 				if (this.module) {
-					let {label }= this.module.navigation;
+					let {label} = this.module.navigation;
+					let {color} = this.module.config || {};
 					$window.document.title = `Platform – ${label}`;
+					this.color = color;
 				}
+			} else {
+				this.color = null;
 			}
 		});
 	}
@@ -109,7 +114,7 @@ app.component('app', {
 				</md-list>
 			</md-sidenav>
 			<div layout="column" flex id="content">
-				<md-toolbar>
+				<md-toolbar class="module-color" ng-style="{'background-color': app.color}">
 					<div class="md-toolbar-tools" ui-view="toolbar">
 						<h1 flex>
 							{{app.module.navigation.label}}

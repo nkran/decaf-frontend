@@ -5,3 +5,8 @@ md-list-item a.md-button {
 	font-weight: normal;
 	margin: 0;
 }
+
+
+md-toolbar.module-color {
+	transition: background-color 750ms;
+}

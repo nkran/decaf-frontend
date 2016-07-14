@@ -6,6 +6,9 @@
 			"label": "Example",
 			"icon": "insert_chart"
 		},
-		"dependencies": []
+		"dependencies": [],
+		"config": {
+			"color": "#42c8ff"
+		}
 	}
 }
