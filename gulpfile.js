@@ -220,12 +220,12 @@ gulp.task('build/app', gulp.parallel(
  * Build modules
  * Note that, before running this task, `build/deps` must be run.
  */
+const modulesConfig = [];
+const modules = new Map();
+const dependencies = new Map();
 gulp.task('build/modules', gulp.series(
 	// Build configuration
 	function config(done) {
-		let paths = new Map();
-		let modulesConfig = [];
-
 		let stream = gulp
 			.src('./modules.config.json')
 			.pipe(plumber())
@@ -238,11 +238,20 @@ gulp.task('build/modules', gulp.series(
 					let configs = JSON.parse(contents);
 
 					for (let module of Object.keys(configs)) {
+						let config = configs[module];
+
 						let {name, path} = parseModule(module);
 						// Get module config
-						modulesConfig.push(configs[module]);
+						modulesConfig.push(config);
 						// Set list of modules
-						paths.set(name, path);
+						modules.set(name, path);
+
+						if (config.dependencies) {
+							for (let dependency of config.dependencies) {
+								let {name, path} = parseModule(dependency);
+								dependencies.set(name, path);
+							}
+						}
 					}
 
 					cb();
@@ -254,11 +263,37 @@ gulp.task('build/modules', gulp.series(
 				function (cb) {
 					let contents = '';
 
-					for (let name of paths.keys()) {
+					for (let name of modules.keys()) {
 						contents += `import '${name}';\n`;
 					}
+
+					for (let name of dependencies.keys()) {
+						let dep = toCamelCase(name);
+
+						// Add dep import.
+						contents += `import ${dep} from '${name}';\n`;
+
+						// Generate typings for the above imports.
+						// Makes sure there are not errors thrown.
+						let typings = `declare module '${name}' {\n\tconst ${dep}: any;\n\texport default ${dep};\n}\n`;
+						this.push(
+							new File({
+								contents: new Buffer(typings),
+								path: `${dep}.d.ts`
+							})
+						);
+					}
+
+					// Export the modules dependencies:
+					// 1. Get the keys of the `dependencies` map
+					// 2. Convert the keys to valid JS var name
+					// 3. Convert everything to JSON
+					// 4. Remove quotes around the dep names (these are actually vars)
+					contents += `\nexport const MODULES_DEPENDENCIES = ${JSON.stringify(Array.from(dependencies.keys()).map((name) => toCamelCase(name))).replace(/"/g, '')};\n`;
+
+					// Export the modules config as default
 					contents += `\nconst MODULES_CONFIG = ${JSON.stringify(modulesConfig, null, 4)};\n`;
-					contents += '\nexport default MODULES_CONFIG ;';
+					contents += '\nexport default MODULES_CONFIG;';
 
 					this.push(
 						new File({
@@ -273,32 +308,40 @@ gulp.task('build/modules', gulp.series(
 			// TS needs a physical location for the files,
 			// thus the below save in dist.
 			.pipe(gulp.dest(PATHS.dist))
+			.pipe(size(GULP_SIZE_DEFAULT_CONFIG))
 			.pipe(typescript(typescript.createProject('tsconfig.json', {
-				typescript: require('typescript')
+				typescript: require('typescript'),
+				noEmitOnError: false,
+				noResolve: true
 			})))
 			.js
 			.pipe(size(GULP_SIZE_DEFAULT_CONFIG))
 			.pipe(gulp.dest(PATHS.dist));
 
 		stream.on('end', () => {
-			del([`${PATHS.dist}/modules.config.ts`]).then(() => {
+			// Cleanup:
+			// 1. Remove generated typings
+			// 2. Remove generated TS modules config (we only need the transpiled one)
+			let typings = Array.from(dependencies.keys()).map((name) => `${PATHS.dist}/${toCamelCase(name)}.d.ts`);
+			del([
+				`${PATHS.dist}/modules.config.ts`,
+			].concat(typings)).then(() => {
 				done();
 			});
 		});
 	},
-	// Install each module as a jspm package
+	// Install each module and module deps as jspm packages
 	function install() {
-		let contents = readFileSync('./modules.config.json');
-		let json = JSON.parse(contents);
 		let proc;
 
-		let packages = '';
-		for (let module of Object.keys(json)) {
-			let {name, path} = parseModule(module);
-			packages += `${name}=${path} `;
+		let packagesString = '';
+		// TODO: filter duplicates (an edge case, but it's a possibility)
+		let packages = new Map([...modules, ...dependencies]);
+		for (let [name, path] of packages.entries()) {
+			packagesString += `${name}=${path} `;
 		}
 
-		proc = exec(`${__dirname}/node_modules/.bin/jspm install ${packages}`, {cwd: PATHS.dist});
+		proc = exec(`${__dirname}/node_modules/.bin/jspm install ${packagesString}`, {cwd: PATHS.dist});
 
 		proc.stdout
 			.pipe(split())
@@ -316,6 +359,18 @@ gulp.task('build/modules', gulp.series(
 		return proc;
 	}
 ));
+
+function toCamelCase(name) {
+	// Set the name to be everything after the last '/'
+	let index = name.lastIndexOf('/');
+	if (index !== -1) {
+		name = name.substr(index + 1);
+	}
+
+	// Convert hyphens to camel case
+	// http://stackoverflow.com/questions/6660977/convert-hyphens-to-camel-case-camelcase
+	return name.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+}
 
 function parseModule(module) {
 	let name;

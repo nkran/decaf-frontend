@@ -2,7 +2,7 @@ import {module} from 'angular';
 import 'angular-material';
 import 'angular-ui-router';
 import sharing from 'decaf-common';
-import MODULES_CONFIG from 'modules.config';
+import MODULES_CONFIG, {MODULES_DEPENDENCIES} from 'modules.config';
 
 import {isProd} from './env';
 
@@ -35,6 +35,7 @@ const APP_COMPONENTS = [
 const app = module('platform', [].concat(
 	CORE_COMPONENTS,
 	COMMON,
+	MODULES_DEPENDENCIES.map((module) => module.name),
 	MODULES_CONFIG.map((module) => module.name),
 	APP_COMPONENTS
 ));

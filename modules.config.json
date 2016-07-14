@@ -5,6 +5,7 @@
 			"state": "root.example",
 			"label": "Example",
 			"icon": "insert_chart"
-		}
+		},
+		"dependencies": []
 	}
 }
