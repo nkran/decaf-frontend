@@ -6,6 +6,8 @@ import MODULES_CONFIG from 'modules.config';
 
 import {isProd} from './env';
 
+import config from './common/config';
+
 import home from './components/home/home';
 import login from './components/login/login';
 
@@ -21,6 +23,10 @@ const CORE_COMPONENTS = [
 	sharing.name
 ];
 
+const COMMON = [
+	config.name
+];
+
 const APP_COMPONENTS = [
 	home.name,
 	login.name
@@ -28,8 +34,9 @@ const APP_COMPONENTS = [
 
 const app = module('platform', [].concat(
 	CORE_COMPONENTS,
-	APP_COMPONENTS,
-	MODULES_CONFIG.map((module) => module.name)
+	COMMON,
+	MODULES_CONFIG.map((module) => module.name),
+	APP_COMPONENTS
 ));
 
 
@@ -58,15 +65,14 @@ app.config(function ($urlMatcherFactoryProvider, $stateProvider) {
 class AppController {
 	modules: any[] = MODULES_CONFIG;
 	module: any = null;
-	constructor($rootScope, $window) {
+	constructor($rootScope, $window, modulesConfig) {
 		// Set title
 		// 1. Set document title
 		// 2. Set toolbar title
 		$rootScope.$on('$stateChangeSuccess', (previousRoute, currentRoute) => {
 			let {module = null} = currentRoute.data || {};
-			console.log(module)
 			if (module) {
-				this.module = MODULES_CONFIG.find(({name}) => name === module);
+				this.module = modulesConfig.configForModule(module);
 				if (this.module) {
 					let {label }= this.module.navigation;
 					$window.document.title = `Platform – ${label}`;
