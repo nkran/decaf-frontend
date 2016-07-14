@@ -77,7 +77,7 @@ class AppController {
 				this.module = modulesConfig.configForModule(module);
 				if (this.module) {
 					let {label} = this.module.navigation;
-					let {color} = this.module.config || {};
+					let {color = null} = this.module.config || {};
 					$window.document.title = `Platform – ${label}`;
 					this.color = color;
 				}
