@@ -8,6 +8,7 @@ import {isProd} from './env';
 
 import config from './common/config';
 
+import nav from './components/layout/project-nav';
 import home from './components/home/home';
 import login from './components/login/login';
 
@@ -28,6 +29,7 @@ const COMMON = [
 ];
 
 const APP_COMPONENTS = [
+	nav.name,
 	home.name,
 	login.name
 ];
@@ -89,6 +91,11 @@ class AppController {
 			}
 		});
 	}
+
+	modulesWithoutProjects() {
+		return this.modules.filter(({project}) => !project)
+	}
+
 	$onInit() {
 		console.info(`App running in ${
 			isProd() ? 'production' : 'dev'
@@ -107,11 +114,12 @@ app.component('app', {
 	template: `
 		<div layout="row" flex ui-view="root">
 			<md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+				<project-nav modules="app.modules" module="app.module" color="app.color"></project-nav>
 				<div ng-transclude="navigation"></div>
 				<div ui-view="navigation"></div>
 				<md-divider ng-if="app.modules.length"></md-divider>
 				<md-list>
-					<md-list-item ng-repeat="module in ::app.modules" ui-sref="{{module.navigation.state}}">
+					<md-list-item ng-repeat="module in ::app.modulesWithoutProjects()" ui-sref="{{module.navigation.state}}">
 						<md-icon>{{ module.navigation.icon }}</md-icon>
 						<p>{{ module.navigation.label }}</p>
 					</md-list-item>
