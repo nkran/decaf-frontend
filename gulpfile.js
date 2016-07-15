@@ -220,12 +220,17 @@ gulp.task('build/app', gulp.parallel(
  * Build modules
  * Note that, before running this task, `build/deps` must be run.
  */
-const modulesConfig = [];
-const modules = new Map();
-const dependencies = new Map();
+let modulesConfig = [];
+let modules = new Map();
+let dependencies = new Map();
 gulp.task('build/modules', gulp.series(
 	// Build configuration
 	function config(done) {
+		// Reset global vars
+		modulesConfig = [];
+		modules = new Map();
+		dependencies = new Map();
+
 		let stream = gulp
 			.src('./modules.config.json')
 			.pipe(plumber())
