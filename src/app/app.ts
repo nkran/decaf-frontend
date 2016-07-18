@@ -1,6 +1,8 @@
 import {module} from 'angular';
 import 'angular-material';
 import 'angular-ui-router';
+// Turn of WS TS inspection for the 'decaf-common' import.
+// noinspection TypeScriptCheckImport
 import sharing from 'decaf-common';
 import MODULES_CONFIG, {MODULES_DEPENDENCIES} from 'modules.config';
 
@@ -8,9 +10,9 @@ import {isProd} from './env';
 
 import config from './common/config';
 
-import nav from './components/layout/project-nav';
 import home from './components/home/home';
 import login from './components/login/login';
+import project from './components/project/project';
 
 
 const CORE_COMPONENTS = [
@@ -29,9 +31,9 @@ const COMMON = [
 ];
 
 const APP_COMPONENTS = [
-	nav.name,
 	home.name,
-	login.name
+	login.name,
+	project.name
 ];
 
 const app = module('platform', [].concat(
@@ -93,7 +95,7 @@ class AppController {
 	}
 
 	modulesWithoutProjects() {
-		return this.modules.filter(({project}) => !project)
+		return this.modules.filter(({isProjectType}) => !isProjectType)
 	}
 
 	$onInit() {
@@ -114,7 +116,7 @@ app.component('app', {
 	template: `
 		<div layout="row" flex ui-view="root">
 			<md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
-				<project-nav modules="app.modules" module="app.module" color="app.color"></project-nav>
+				<project-nav modules="app.modules" color="app.color"></project-nav>
 				<div ng-transclude="navigation"></div>
 				<div ui-view="navigation"></div>
 				<md-divider ng-if="app.modules.length"></md-divider>

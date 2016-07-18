@@ -1,4 +1,6 @@
 import {module as ngModule} from 'angular';
+// Turn of WS TS inspection for the 'decaf-common' import.
+// noinspection TypeScriptCheckImport
 import {dirname} from 'decaf-common';
 import './home.css!';
 

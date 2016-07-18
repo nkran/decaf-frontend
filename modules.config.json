@@ -1,7 +1,7 @@
 {
 	"github:biosustain/decaf-frontend-module-example": {
 		"name": "example",
-		"project": true,
+		"isProjectType": true,
 		"navigation": {
 			"state": "root.example",
 			"label": "Example",
