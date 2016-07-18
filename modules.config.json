@@ -2,14 +2,23 @@
 	"github:biosustain/decaf-frontend-module-example": {
 		"name": "example",
 		"color": "#42c8ff",
-		"isProjectType": false,
 		"navigation": {
 			"state": "root.example",
-			"label": "Example",
-			"icon": "insert_chart"
+			"label": "Example Module",
+			"icon": "apps"
 		},
 		"dependencies": [],
 		"config": {}
-
+	},
+	"github:biosustain/decaf-frontend-project-module-example": {
+		"name": "project-example",
+		"isProjectType": true,
+		"navigation": {
+			"state": "root.project.project-example",
+			"label": "Example Project Module",
+			"icon": "view_module"
+		},
+		"dependencies": [],
+		"config": {}
 	}
 }
