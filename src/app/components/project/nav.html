@@ -1,5 +1,5 @@
 <div ng-if="nav.projects.length">
-	<md-toolbar ng-style="{'background-color': nav.project.color}" class="module-color">
+	<md-toolbar ng-style="{'background-color': nav.project.color || nav.color()}" class="module-color">
 		<div class="md-toolbar-tools">
 			<h1 flex>
 				<a ng-if="nav.project" ui-sref="root.project.home({projectId: project.id})">{{nav.project.name}}</a>

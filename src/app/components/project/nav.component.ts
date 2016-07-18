@@ -60,7 +60,8 @@ nav.component('projectNav', {
 	controllerAs: 'nav',
 	bindings: {
 		_modules: '=modules',
-		project: '='
+		project: '=',
+		color: '&'
 	}
 });
 

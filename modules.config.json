@@ -1,6 +1,7 @@
 {
 	"github:biosustain/decaf-frontend-module-example": {
 		"name": "example",
+		"color": "#42c8ff",
 		"isProjectType": true,
 		"navigation": {
 			"state": "root.example",
@@ -8,9 +9,7 @@
 			"icon": "insert_chart"
 		},
 		"dependencies": [],
-		"config": {
-			"color": "#42c8ff"
-		}
+		"config": {}
 
 	}
 }

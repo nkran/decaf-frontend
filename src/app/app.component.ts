@@ -70,26 +70,22 @@ app.config(function ($urlMatcherFactoryProvider, $stateProvider) {
 class AppController {
 	modules: any[] = MODULES_CONFIG;
 	module: any = null;
-	color: string | null;
+
 	constructor($rootScope, $window, modulesConfig) {
 		// Set title
 		// 1. Set document title
 		// 2. Set toolbar title
-		// 3. Set app color
 		$rootScope.$on('$stateChangeSuccess', (previousRoute, currentRoute) => {
 			let {module = null} = currentRoute.data || {};
 			if (module) {
 				this.module = modulesConfig.configForModule(module);
 				if (this.module) {
 					let {label} = this.module.navigation;
-					let {color = null} = this.module.config || {};
 					$window.document.title = `Platform – ${label}`;
-					this.color = color;
 				}
 			} else {
 				$window.document.title = 'Platform';
 				this.module = null;
-				this.color = null;
 			}
 		});
 	}
@@ -116,7 +112,7 @@ app.component('app', {
 	template: `
 		<div layout="row" flex ui-view="root">
 			<md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
-				<project-nav modules="app.modules" project="app.project"></project-nav>
+				<project-nav modules="app.modules" project="app.project" color="app.module.color"></project-nav>
 				<div ng-transclude="navigation"></div>
 				<div ui-view="navigation"></div>
 				<md-divider ng-if="app.modules.length"></md-divider>
@@ -128,7 +124,7 @@ app.component('app', {
 				</md-list>
 			</md-sidenav>
 			<div layout="column" flex id="content">
-				<md-toolbar class="module-color" ng-style="{'background-color': app.project.color}">
+				<md-toolbar class="module-color" ng-style="{'background-color': app.project.color || app.module.color}">
 					<div class="md-toolbar-tools" ui-view="toolbar">
 						<h1 flex>
 							{{app.module.navigation.label}}
