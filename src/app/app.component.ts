@@ -10,9 +10,9 @@ import {isProd} from './env';
 
 import config from './common/config';
 
-import home from './components/home/home';
-import login from './components/login/login';
-import project from './components/project/project';
+import home from './components/home/home.component';
+import login from './components/login/login.component';
+import project from './components/project/project.component';
 
 
 const CORE_COMPONENTS = [

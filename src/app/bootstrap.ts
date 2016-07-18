@@ -2,7 +2,7 @@ import {
 	bootstrap,
 	element
 } from 'angular';
-import app from './app';
+import app from './app.component';
 
 
 element(document).ready(() => {
