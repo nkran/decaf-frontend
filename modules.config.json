@@ -16,7 +16,7 @@
 		"navigation": {
 			"state": "root.project.project-example",
 			"label": "Example Project Module",
-			"icon": "view_module"
+			"icon": "apps"
 		},
 		"dependencies": [],
 		"config": {}
