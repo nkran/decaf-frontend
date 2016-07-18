@@ -116,7 +116,7 @@ app.component('app', {
 	template: `
 		<div layout="row" flex ui-view="root">
 			<md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
-				<project-nav modules="app.modules" project="app.project" color="app.color"></project-nav>
+				<project-nav modules="app.modules" project="app.project"></project-nav>
 				<div ng-transclude="navigation"></div>
 				<div ui-view="navigation"></div>
 				<md-divider ng-if="app.modules.length"></md-divider>
