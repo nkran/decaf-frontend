@@ -74,6 +74,7 @@ class AppController {
 		// Set title
 		// 1. Set document title
 		// 2. Set toolbar title
+		// 3. Update the config with the module config (gives the module access to it's config from the platform modules.config.json)
 		$rootScope.$on('$stateChangeSuccess', (previousRoute, currentRoute) => {
 			let {module = null} = currentRoute.data || {};
 			if (module) {
@@ -81,10 +82,16 @@ class AppController {
 				if (this.module) {
 					let {label} = this.module.navigation;
 					$window.document.title = `Platform – ${label}`;
+					// Turn of WS inspection for TS
+					// noinspection TypeScriptUnresolvedFunction
+					config.set('module', this.module);
 				}
 			} else {
 				$window.document.title = 'Platform';
 				this.module = null;
+				// Turn of WS inspection for TS
+				// noinspection TypeScriptUnresolvedFunction
+				config.set('module', null);
 			}
 		});
 	}
