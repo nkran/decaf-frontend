@@ -2,7 +2,7 @@
 	<md-toolbar ng-style="{'background-color': nav.project.color || nav.color()}" class="module-color">
 		<div class="md-toolbar-tools">
 			<h1 flex>
-				<a ng-if="nav.project" ui-sref="root.project.home({projectId: project.id})">{{nav.project.name}}</a>
+				<a ng-if="nav.project" ui-sref="root.project.home({projectId: nav.project.id})">{{nav.project.name}}</a>
 				<span ng-if="!nav.project">Platform</span>
 			</h1>
 
