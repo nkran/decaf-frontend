@@ -3,12 +3,10 @@ import 'angular-material';
 import 'angular-ui-router';
 // Turn of WS TS inspection for the 'decaf-common' import.
 // noinspection TypeScriptCheckImport
-import sharing from 'decaf-common';
+import {sharing, config, Config} from 'decaf-common';
 import MODULES_CONFIG, {MODULES_DEPENDENCIES} from 'modules.config';
 
 import {isProd} from './env';
-
-import config from './common/config';
 
 import home from './components/home/home.component';
 import login from './components/login/login.component';
@@ -21,12 +19,11 @@ const CORE_COMPONENTS = [
 	'ngAria',
 	'ngMaterial',
 	// 3rd Party
-	'ui.router',
-	// Biosustain
-	sharing.name
+	'ui.router'
 ];
 
 const COMMON = [
+	sharing.name,
 	config.name
 ];
 
@@ -71,14 +68,16 @@ class AppController {
 	modules: any[] = MODULES_CONFIG;
 	module: any = null;
 
-	constructor($rootScope, $window, modulesConfig) {
+	constructor($rootScope, $window, private config: Config) {
+		console.log(config);
+
 		// Set title
 		// 1. Set document title
 		// 2. Set toolbar title
 		$rootScope.$on('$stateChangeSuccess', (previousRoute, currentRoute) => {
 			let {module = null} = currentRoute.data || {};
 			if (module) {
-				this.module = modulesConfig.configForModule(module);
+				this.module = MODULES_CONFIG.find(({name}) => name === module);
 				if (this.module) {
 					let {label} = this.module.navigation;
 					$window.document.title = `Platform – ${label}`;
@@ -88,6 +87,13 @@ class AppController {
 				this.module = null;
 			}
 		});
+	}
+
+	// Update color from config
+	get color() {
+		// Turn off WS inspection for this
+		// noinspection TypeScriptUnresolvedFunction
+		return this.config.get('color');
 	}
 
 	modulesWithoutProjects() {
@@ -112,7 +118,7 @@ app.component('app', {
 	template: `
 		<div layout="row" flex ui-view="root">
 			<md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
-				<project-nav modules="app.modules" project="app.project" color="app.module.color"></project-nav>
+				<project-nav modules="app.modules" project="app.project" color="app.color || app.module.color"></project-nav>
 				<div ng-transclude="navigation"></div>
 				<div ui-view="navigation"></div>
 				<md-divider ng-if="app.modules.length"></md-divider>
@@ -124,7 +130,7 @@ app.component('app', {
 				</md-list>
 			</md-sidenav>
 			<div layout="column" flex id="content">
-				<md-toolbar class="module-color" ng-style="{'background-color': app.project.color || app.module.color}">
+				<md-toolbar class="module-color" ng-style="{'background-color': app.color || app.project.color || app.module.color}">
 					<div class="md-toolbar-tools" ui-view="toolbar">
 						<h1 flex>
 							{{app.module.navigation.label}}

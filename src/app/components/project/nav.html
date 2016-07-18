@@ -33,8 +33,6 @@
 		</div>
 	</md-toolbar>
 
-	<md-divider></md-divider>
-
 	<md-list ng-hide="nav.project">
 		<md-subheader class="md-no-sticky">Projects</md-subheader>
 		<md-list-item ng-repeat="project in nav.projects" ui-sref="root.project.home({projectId: project.id})">
