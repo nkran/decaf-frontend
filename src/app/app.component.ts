@@ -69,8 +69,6 @@ class AppController {
 	module: any = null;
 
 	constructor($rootScope, $window, private config: Config) {
-		console.log(config);
-
 		// Set title
 		// 1. Set document title
 		// 2. Set toolbar title
