@@ -30,6 +30,9 @@ class ProjectNavController {
 		return this._projects.toArray();
 	}
 
+	// We only update the project from within this component
+	set project(value) {}
+
 	get project() {
 		return this._projects.current();
 	}
@@ -57,7 +60,7 @@ nav.component('projectNav', {
 	controllerAs: 'nav',
 	bindings: {
 		_modules: '=modules',
-		color: '='
+		project: '='
 	}
 });
 
