@@ -2,7 +2,7 @@
 	"github:biosustain/decaf-frontend-module-example": {
 		"name": "example",
 		"color": "#42c8ff",
-		"isProjectType": true,
+		"isProjectType": false,
 		"navigation": {
 			"state": "root.example",
 			"label": "Example",
