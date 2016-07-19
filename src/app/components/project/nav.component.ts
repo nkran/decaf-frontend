@@ -1,8 +1,7 @@
 import {module as ngModule} from 'angular';
 // Turn of WS TS inspection for the 'decaf-common' import.
 // noinspection TypeScriptCheckImport
-import {dirname} from 'decaf-common';
-import projects, {Projects} from './projects';
+import {dirname, projects, Projects} from 'decaf-common';
 
 
 const nav = ngModule('platform.project.nav', [
@@ -27,6 +26,8 @@ class ProjectNavController {
 	}
 
 	get projects() {
+		// Turn off WS inspection for this
+		// noinspection TypeScriptUnresolvedFunction
 		return this._projects.toArray();
 	}
 
@@ -34,6 +35,8 @@ class ProjectNavController {
 	set project(value) {}
 
 	get project() {
+		// Turn off WS inspection for this
+		// noinspection TypeScriptUnresolvedFunction
 		return this._projects.current();
 	}
 

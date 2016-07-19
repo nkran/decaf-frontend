@@ -1,9 +1,8 @@
 import {module as ngModule} from 'angular';
 // Turn of WS TS inspection for the 'decaf-common' import.
 // noinspection TypeScriptCheckImport
-import {dirname} from 'decaf-common';
+import {dirname, projects, Projects} from 'decaf-common';
 import './project.css!';
-import projects, {Projects} from './projects';
 import nav from './nav.component';
 
 const project = ngModule('platform.project', [
@@ -13,6 +12,7 @@ const project = ngModule('platform.project', [
 
 
 project.config(function ($stateProvider) {
+	// noinspection TypeScriptUnresolvedFunction
 	$stateProvider
 		.state('root.project', {
 			abstract: true,
@@ -21,9 +21,11 @@ project.config(function ($stateProvider) {
 				project: ['$stateParams', 'projects', ($stateParams, projects: Projects<any>) => projects.byId($stateParams.projectId)]
 			},
 			onEnter(projects: Projects<any>, project) {
+				// noinspection TypeScriptUnresolvedFunction
 				projects.current(project);
 			},
 			onExit(projects: Projects<any>) {
+				// noinspection TypeScriptUnresolvedFunction
 				projects.current(null);
 			}
 		})
