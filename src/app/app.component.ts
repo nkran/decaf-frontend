@@ -3,14 +3,13 @@ import 'angular-material';
 import 'angular-ui-router';
 // Turn of WS TS inspection for the 'decaf-common' import.
 // noinspection TypeScriptCheckImport
-import {sharing, config, Config} from 'decaf-common';
+import {sharing, project, config, Config} from 'decaf-common';
 import MODULES_CONFIG, {MODULES_DEPENDENCIES} from 'modules.config';
 
 import {isProd} from './env';
 
 import home from './components/home/home.component';
 import login from './components/login/login.component';
-import project from './components/project/project.component';
 
 
 const CORE_COMPONENTS = [
@@ -24,13 +23,13 @@ const CORE_COMPONENTS = [
 
 const COMMON = [
 	sharing.name,
-	config.name
+	config.name,
+	project.name
 ];
 
 const APP_COMPONENTS = [
-	home.name,
 	login.name,
-	project.name
+	home.name
 ];
 
 const app = module('platform', [].concat(
