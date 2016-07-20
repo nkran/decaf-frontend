@@ -4,7 +4,7 @@
 		"color": "#42c8ff",
 		"navigation": {
 			"state": "root.example",
-			"label": "Example Module",
+			"label": "Example Component",
 			"icon": "apps"
 		}
 	},
@@ -13,7 +13,7 @@
 		"isProjectType": true,
 		"navigation": {
 			"state": "root.project.project-example",
-			"label": "Example Project Module",
+			"label": "Example Project Component",
 			"icon": "apps"
 		}
 	}

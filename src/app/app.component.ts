@@ -4,7 +4,7 @@ import 'angular-ui-router';
 // Turn of WS TS inspection for the 'decaf-common' import.
 // noinspection TypeScriptCheckImport
 import {sharing, project, config, Config} from 'decaf-common';
-import MODULES_CONFIG from 'modules.config';
+import COMPONENTS_CONFIG from 'components.config';
 
 import {isProd} from './env';
 
@@ -35,7 +35,7 @@ const APP_COMPONENTS = [
 const app = module('platform', [].concat(
 	CORE_COMPONENTS,
 	COMMON,
-	MODULES_CONFIG.map((module) => module.name),
+	COMPONENTS_CONFIG.map((component) => component.name),
 	APP_COMPONENTS
 ));
 
@@ -63,31 +63,31 @@ app.config(function ($urlMatcherFactoryProvider, $stateProvider) {
 
 // Main component
 class AppController {
-	modules: any[] = MODULES_CONFIG;
-	module: any = null;
+	components: any[] = COMPONENTS_CONFIG;
+	component: any = null;
 
 	constructor($rootScope, $window, private config: Config) {
 		// Set title
 		// 1. Set document title
 		// 2. Set toolbar title
-		// 3. Update the config with the module config (gives the module access to it's config from the platform modules.config.json)
+		// 3. Update the config with the component config (gives the component access to it's config from the platform components.config.json)
 		$rootScope.$on('$stateChangeSuccess', (previousRoute, currentRoute) => {
-			let {module = null} = currentRoute.data || {};
-			if (module) {
-				this.module = MODULES_CONFIG.find(({name}) => name === module);
-				if (this.module) {
-					let {label} = this.module.navigation;
+			let {component = null} = currentRoute.data || {};
+			if (component) {
+				this.component = COMPONENTS_CONFIG.find(({name}) => name === component);
+				if (this.component) {
+					let {label} = this.component.navigation;
 					$window.document.title = `Platform – ${label}`;
 					// Turn of WS inspection for TS
 					// noinspection TypeScriptUnresolvedFunction
-					config.set('module', this.module);
+					config.set('component', this.component);
 				}
 			} else {
 				$window.document.title = 'Platform';
-				this.module = null;
+				this.component = null;
 				// Turn of WS inspection for TS
 				// noinspection TypeScriptUnresolvedFunction
-				config.set('module', null);
+				config.set('component', null);
 			}
 		});
 	}
@@ -99,8 +99,8 @@ class AppController {
 		return this.config.get('color');
 	}
 
-	modulesWithoutProjects() {
-		return this.modules.filter(({isProjectType}) => !isProjectType);
+	componentsWithoutProjects() {
+		return this.components.filter(({isProjectType}) => !isProjectType);
 	}
 
 	$onInit() {
@@ -121,22 +121,22 @@ app.component('app', {
 	template: `
 		<div layout="row" flex ui-view="root">
 			<md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
-				<project-nav modules="app.modules" project="app.project" color="app.color || app.module.color"></project-nav>
+				<project-nav components="app.components" project="app.project" color="app.color || app.component.color"></project-nav>
 				<div ng-transclude="navigation"></div>
 				<div ui-view="navigation"></div>
-				<md-divider ng-if="app.modules.length"></md-divider>
+				<md-divider ng-if="app.components.length"></md-divider>
 				<md-list>
-					<md-list-item ng-repeat="module in ::app.modulesWithoutProjects()" ui-sref="{{module.navigation.state}}">
-						<md-icon>{{ module.navigation.icon }}</md-icon>
-						<p>{{ module.navigation.label }}</p>
+					<md-list-item ng-repeat="component in ::app.componentsWithoutProjects()" ui-sref="{{component.navigation.state}}">
+						<md-icon>{{ component.navigation.icon }}</md-icon>
+						<p>{{ component.navigation.label }}</p>
 					</md-list-item>
 				</md-list>
 			</md-sidenav>
 			<div layout="column" flex id="content">
-				<md-toolbar class="module-color" ng-style="{'background-color': app.color || app.project.color || app.module.color}">
+				<md-toolbar class="component-color" ng-style="{'background-color': app.color || app.project.color || app.component.color}">
 					<div class="md-toolbar-tools" ui-view="toolbar">
 						<h1 flex>
-							{{app.module.navigation.label}}
+							{{app.component.navigation.label}}
 						</h1>
 						<div ng-transclude="toolbar"></div>
 					</div>

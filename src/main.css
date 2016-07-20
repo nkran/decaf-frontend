@@ -1,12 +1,9 @@
-/**
- * Hack for https://github.com/angular/material/issues/5608
- */
+md-toolbar.component-color {
+	transition: background-color 750ms;
+}
+
+/* Hack for https://github.com/angular/material/issues/5608 */
 md-list-item a.md-button {
 	font-weight: normal;
 	margin: 0;
-}
-
-
-md-toolbar.module-color {
-	transition: background-color 750ms;
 }

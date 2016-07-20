@@ -9,7 +9,7 @@ SystemJS.config({
 		"npm:": "jspm_packages/npm/"
 	},
 	map: {
-		"modules.config": "./modules.config.js"
+		"components.config": "./components.config.js"
 	},
 	packages: {
 		"app": {

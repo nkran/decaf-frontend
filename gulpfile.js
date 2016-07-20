@@ -217,60 +217,60 @@ gulp.task('build/app', gulp.parallel(
 
 
 /**
- * Build modules
+ * Build components
  * Note that, before running this task, `build/deps` must be run.
  */
-let modulesConfig = [];
-let modules = new Map();
-gulp.task('build/modules', gulp.series(
+let componentsConfig = [];
+let components = new Map();
+gulp.task('build/components', gulp.series(
 	// Build configuration
 	function config(done) {
 		// Reset global vars
-		modulesConfig = [];
-		modules = new Map();
+		componentsConfig = [];
+		components = new Map();
 
 		let stream = gulp
-			.src('./modules.config.json')
+			.src('./components.config.json')
 			.pipe(plumber())
 			.pipe(through.obj(
-				// Build a modules config object based on the modules json configuration:
-				// 1. Read the contents of the modules json config
-				// 2. Build the modules config object
+				// Build a components config object based on the components json configuration:
+				// 1. Read the contents of the components json config
+				// 2. Build the components config object
 				(file, enc, cb) => {
 					let contents = readFileSync(file.path);
 					let configs = JSON.parse(contents);
 
-					for (let module of Object.keys(configs)) {
-						let config = configs[module];
-						let {name, path} = parseModule(module);
+					for (let component of Object.keys(configs)) {
+						let config = configs[component];
+						let {name, path} = parseComponent(component);
 
-						// Get module config
-						modulesConfig.push(config);
-						// Set list of modules
-						modules.set(name, path);
+						// Get component config
+						componentsConfig.push(config);
+						// Set list of components
+						components.set(name, path);
 					}
 
 					cb();
 				},
-				// Based on the modules config from the above step, build a config file to be used by the app:
+				// Based on the components config from the above step, build a config file to be used by the app:
 				// 1. Add import for each package
-				// 2. Add the modules config object as a constant export
+				// 2. Add the components config object as a constant export
 				// 3. Append all to the config file
 				function (cb) {
 					let contents = '';
 
-					for (let name of modules.keys()) {
+					for (let name of components.keys()) {
 						contents += `import '${name}';\n`;
 					}
 
-					// Export the modules config as default
-					contents += `\nconst MODULES_CONFIG = ${JSON.stringify(modulesConfig, null, 4)};\n`;
-					contents += '\nexport default MODULES_CONFIG;';
+					// Export the components config as default
+					contents += `\nconst COMPONENTS_CONFIG = ${JSON.stringify(componentsConfig, null, 4)};\n`;
+					contents += '\nexport default COMPONENTS_CONFIG;';
 
 					this.push(
 						new File({
 							contents: new Buffer(contents),
-							path: 'modules.config.ts'
+							path: 'components.config.ts'
 						})
 					);
 
@@ -292,18 +292,18 @@ gulp.task('build/modules', gulp.series(
 
 		stream.on('end', () => {
 			// Cleanup:
-			// 1. Remove generated TS modules config (we only need the transpiled one)
-			del([`${PATHS.dist}/modules.config.ts`,]).then(() => {
+			// 1. Remove generated TS components config (we only need the transpiled one)
+			del([`${PATHS.dist}/components.config.ts`,]).then(() => {
 				done();
 			});
 		});
 	},
-	// Install each module and module deps as jspm packages
+	// Install each component as jspm packages
 	function install() {
 		let proc;
 
 		let packagesString = '';
-		for (let [name, path] of modules.entries()) {
+		for (let [name, path] of components.entries()) {
 			packagesString += `${name}=${path} `;
 		}
 
@@ -319,7 +319,7 @@ gulp.task('build/modules', gulp.series(
 		proc.on('close', () => {
 			// Reload the browser.
 			// Only when BS is running.
-			bs.reload('modules.config.json');
+			bs.reload('components.config.json');
 		});
 
 		return proc;
@@ -338,13 +338,13 @@ function toCamelCase(name) {
 	return name.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
 }
 
-function parseModule(module) {
+function parseComponent(component) {
 	let name;
 
-	if (module.indexOf('@') !== -1) {
-		name = module.substr(0, module.indexOf('@'));
+	if (component.indexOf('@') !== -1) {
+		name = component.substr(0, component.indexOf('@'));
 	} else {
-		name = module;
+		name = component;
 	}
 
 	if (name.indexOf(':') !== -1) {
@@ -353,7 +353,7 @@ function parseModule(module) {
 
 	return {
 		name,
-		path: module
+		path: component
 	};
 }
 
@@ -363,7 +363,7 @@ function parseModule(module) {
  */
 gulp.task('build', gulp.series(
 	'build/deps',
-	'build/modules',
+	'build/components',
 	'build/app'
 ));
 
@@ -397,7 +397,7 @@ gulp.task('serve', gulp.series(
 	function start() {
 		// Start watching files for changes
 		gulp.watch('jspm.config.js', gulp.task('build/deps'));
-		gulp.watch('modules.config.json', gulp.task('build/modules'));
+		gulp.watch('components.config.json', gulp.task('build/components'));
 		gulp.watch(PATHS.src.ts, gulp.task('build/js'));
 		gulp.watch(PATHS.src.static, gulp.task('build/static'));
 		gulp.watch(PATHS.src.css, gulp.task('build/css'));
