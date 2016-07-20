@@ -100,7 +100,7 @@ class AppController {
 	}
 
 	modulesWithoutProjects() {
-		return this.modules.filter(({isProjectType}) => !isProjectType)
+		return this.modules.filter(({isProjectType}) => !isProjectType);
 	}
 
 	$onInit() {
