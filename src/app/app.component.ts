@@ -4,7 +4,7 @@ import 'angular-ui-router';
 // Turn of WS TS inspection for the 'decaf-common' import.
 // noinspection TypeScriptCheckImport
 import {sharing, project, config, Config} from 'decaf-common';
-import MODULES_CONFIG, {MODULES_DEPENDENCIES} from 'modules.config';
+import MODULES_CONFIG from 'modules.config';
 
 import {isProd} from './env';
 
@@ -35,7 +35,6 @@ const APP_COMPONENTS = [
 const app = module('platform', [].concat(
 	CORE_COMPONENTS,
 	COMMON,
-	MODULES_DEPENDENCIES.map((module) => module.name),
 	MODULES_CONFIG.map((module) => module.name),
 	APP_COMPONENTS
 ));

@@ -222,14 +222,12 @@ gulp.task('build/app', gulp.parallel(
  */
 let modulesConfig = [];
 let modules = new Map();
-let dependencies = new Map();
 gulp.task('build/modules', gulp.series(
 	// Build configuration
 	function config(done) {
 		// Reset global vars
 		modulesConfig = [];
 		modules = new Map();
-		dependencies = new Map();
 
 		let stream = gulp
 			.src('./modules.config.json')
@@ -244,19 +242,12 @@ gulp.task('build/modules', gulp.series(
 
 					for (let module of Object.keys(configs)) {
 						let config = configs[module];
-
 						let {name, path} = parseModule(module);
+
 						// Get module config
 						modulesConfig.push(config);
 						// Set list of modules
 						modules.set(name, path);
-
-						if (config.dependencies) {
-							for (let dependency of config.dependencies) {
-								let {name, path} = parseModule(dependency);
-								dependencies.set(name, path);
-							}
-						}
 					}
 
 					cb();
@@ -271,30 +262,6 @@ gulp.task('build/modules', gulp.series(
 					for (let name of modules.keys()) {
 						contents += `import '${name}';\n`;
 					}
-
-					for (let name of dependencies.keys()) {
-						let dep = toCamelCase(name);
-
-						// Add dep import.
-						contents += `import ${dep} from '${name}';\n`;
-
-						// Generate typings for the above imports.
-						// Makes sure there are not errors thrown.
-						let typings = `declare module '${name}' {\n\tconst ${dep}: any;\n\texport default ${dep};\n}\n`;
-						this.push(
-							new File({
-								contents: new Buffer(typings),
-								path: `${dep}.d.ts`
-							})
-						);
-					}
-
-					// Export the modules dependencies:
-					// 1. Get the keys of the `dependencies` map
-					// 2. Convert the keys to valid JS var name
-					// 3. Convert everything to JSON
-					// 4. Remove quotes around the dep names (these are actually vars)
-					contents += `\nexport const MODULES_DEPENDENCIES = ${JSON.stringify(Array.from(dependencies.keys()).map((name) => toCamelCase(name))).replace(/"/g, '')};\n`;
 
 					// Export the modules config as default
 					contents += `\nconst MODULES_CONFIG = ${JSON.stringify(modulesConfig, null, 4)};\n`;
@@ -325,12 +292,8 @@ gulp.task('build/modules', gulp.series(
 
 		stream.on('end', () => {
 			// Cleanup:
-			// 1. Remove generated typings
-			// 2. Remove generated TS modules config (we only need the transpiled one)
-			let typings = Array.from(dependencies.keys()).map((name) => `${PATHS.dist}/${toCamelCase(name)}.d.ts`);
-			del([
-				`${PATHS.dist}/modules.config.ts`,
-			].concat(typings)).then(() => {
+			// 1. Remove generated TS modules config (we only need the transpiled one)
+			del([`${PATHS.dist}/modules.config.ts`,]).then(() => {
 				done();
 			});
 		});
@@ -340,9 +303,7 @@ gulp.task('build/modules', gulp.series(
 		let proc;
 
 		let packagesString = '';
-		// TODO: filter duplicates (an edge case, but it's a possibility)
-		let packages = new Map([...modules, ...dependencies]);
-		for (let [name, path] of packages.entries()) {
+		for (let [name, path] of modules.entries()) {
 			packagesString += `${name}=${path} `;
 		}
 

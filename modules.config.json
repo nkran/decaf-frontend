@@ -6,9 +6,7 @@
 			"state": "root.example",
 			"label": "Example Module",
 			"icon": "apps"
-		},
-		"dependencies": [],
-		"config": {}
+		}
 	},
 	"github:biosustain/decaf-frontend-project-module-example": {
 		"name": "project-example",
@@ -17,8 +15,6 @@
 			"state": "root.project.project-example",
 			"label": "Example Project Module",
 			"icon": "apps"
-		},
-		"dependencies": [],
-		"config": {}
+		}
 	}
 }
