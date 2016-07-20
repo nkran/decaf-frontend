@@ -13,7 +13,7 @@ login.config(function ($stateProvider) {
 		url: '/login',
 		views: {
 			'root@': {
-				templateUrl: `${dirname(module.id)}/login.html`,
+				templateUrl: `${dirname(module.id)}/login.component.html`,
 				controller: LoginController,
 				controllerAs: 'home'
 			}

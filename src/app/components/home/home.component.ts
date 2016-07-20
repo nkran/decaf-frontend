@@ -13,7 +13,7 @@ home.config(function ($stateProvider) {
 		url: '',
 		views: {
 			'content@': {
-				templateUrl: `${dirname(module.id)}/home.html`,
+				templateUrl: `${dirname(module.id)}/home.component.html`,
 				controller: HomeController,
 				controllerAs: 'home'
 			}
