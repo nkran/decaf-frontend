@@ -42,6 +42,16 @@ const app = angular.module('platform', [].concat(
 ));
 
 
+// Production config
+// https://docs.angularjs.org/guide/production
+app.config(function ($httpProvider, $compileProvider) {
+	$httpProvider.useApplyAsync(true);
+	if (isProd()) {
+		$compileProvider.debugInfoEnabled(false);
+	}
+});
+
+
 // AM theme config
 app.config(function ($mdThemingProvider) {
 	$mdThemingProvider
