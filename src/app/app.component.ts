@@ -3,7 +3,7 @@ import 'angular-ui-router';
 
 // Turn of WS TS inspection for the 'decaf-common' import.
 // noinspection TypeScriptCheckImport
-import {sharing, project, config, Config} from 'decaf-common';
+import {sharing, utils, project, config, Config} from 'decaf-common';
 
 // Generated from `components.config.json`
 import COMPONENTS_CONFIG from 'components.config';
@@ -26,7 +26,8 @@ const CORE_COMPONENTS = [
 const COMMON = [
 	sharing.name,
 	config.name,
-	project.name
+	project.name,
+	utils.name
 ];
 
 const APP_COMPONENTS = [
