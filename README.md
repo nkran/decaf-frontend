@@ -66,14 +66,13 @@ class FooController {
 
 
 #### Creating Components
-------------------------
 There are two kinds of components that can be used:
 * [Project Component](https://github.com/biosustain/decaf-frontend-project-module-example)
 * [Component](https://github.com/biosustain/decaf-frontend-module-example)
 
-Both can be installed either by downloading it cloning it (remember that cloning keeps commit history).
+Both can be installed either by downloading it or cloning it (remember that cloning keeps commit history).
 
-Afterwards, navigate to the root of the component via the terminal and run the following commands to install runtime/dev deps:
+Afterwards, navigate to the root of the folder where you have the component (via the terminal) and run the following commands to install the runtime/dev deps:
 * `npm install`
 * `$(npm bin)/typings install`
 
@@ -115,6 +114,12 @@ class MyComponentController {
 // Note the default export
 export default myComponent;
 ```
+
+In the above example, there are a few things that are important:
+* `platformProvider.register(COMPONENT_NAME, {isProjectType: true})` - This is a mandatory action.
+You use that to register a component (remember that `COMPONENT_NAME` should match `{name}` from the platform `components.config.json`).
+* `{isProjectType: true}` - You can use the second argument to configure the component, in this case `{isProjectType: true}` will tell the platform that this is a project component.
+Note that you still need to specify the same `isProjectType` property in `components.config.json`.
 
 
 ### Development
