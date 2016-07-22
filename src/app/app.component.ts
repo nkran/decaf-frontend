@@ -83,7 +83,7 @@ class AppController {
 		// Set title
 		// 1. Set document title
 		// 2. Set toolbar title
-		// 3. Update the config with the component config (gives the component access to it's config from the platform components.config.json)
+		// 3. Update the config with the component config (gives the component access to it's config from the platform `components.config.json`)
 		$rootScope.$on('$stateChangeSuccess', (previousRoute, currentRoute) => {
 			let {component = null} = currentRoute.data || {};
 			if (component) {
