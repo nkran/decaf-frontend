@@ -51,7 +51,8 @@ Each of the above configuration properties should be configured as it follows:
 If the component is not of project type, it will be available at the root, otherwise it will be a subroute of each of the projects.
 It should also be the same as `COMPONENT_NAME` in the component project.
 * `{navigation.label}` (***Mandatory***) - Set the name of the component (used for setting the document and the toolbar title).
-* `{navigation.icon}` (***Mandatory***) - Set the navigation icon for the component, see [Material Icons](https://design.google.com/icons/) for a list of icons. Note that you should write them as snake case (e.g. `bug_report`).
+* `{navigation.icon}` (***Mandatory***) - Set the navigation icon for the component, see [Material Icons](https://design.google.com/icons/) for a list of icons.
+Note that you should write them as snake case (e.g. `bug_report`).
 
 
 ### Development
