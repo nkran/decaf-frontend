@@ -120,6 +120,7 @@ In the above example, there are a few things that are important:
 You use that to register a component (remember that `COMPONENT_NAME` should match `{name}` from the platform `components.config.json`).
 * `{isProjectType: true}` - You can use the second argument to configure the component, in this case it will tell the platform that this is a project component.
 Note that you still need to specify the same `isProjectType` property in `components.config.json`.
+* `dirname(module.id)` - This is just a helper to get the path for where the component resides, you should always use it.
 
 
 ### Development
