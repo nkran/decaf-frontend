@@ -3,7 +3,7 @@
 		"name": "example",
 		"color": "#42c8ff",
 		"navigation": {
-			"state": "root.example",
+			"state": "example",
 			"label": "Example Component",
 			"icon": "apps"
 		}
@@ -12,7 +12,7 @@
 		"name": "project-example",
 		"isProjectType": true,
 		"navigation": {
-			"state": "root.project.project-example",
+			"state": "project-example",
 			"label": "Example Project Component",
 			"icon": "apps"
 		}

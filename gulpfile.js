@@ -254,13 +254,22 @@ gulp.task('build/components', gulp.series(
 				},
 				// Based on the components config from the above step, build a config file to be used by the app:
 				// 1. Add import for each package
-				// 2. Add the components config object as a constant export
-				// 3. Append all to the config file
+				// 2. Set the state for each component
+				// 3. Add the components config object as a constant export
+				// 4. Append all to the config file
 				function (cb) {
 					let contents = '';
 
+					// Set import
 					for (let name of components.keys()) {
 						contents += `import '${name}';\n`;
+					}
+
+					// Set states
+					for (let [key, componentConfig] of componentsConfig.entries()) {
+						let {isProjectType} = componentConfig;
+						let {state} = componentConfig.navigation;
+						componentConfig.navigation.state = `root.${isProjectType ? 'project.' : ''}${state}`;
 					}
 
 					// Export the components config as default
