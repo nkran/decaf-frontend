@@ -54,6 +54,15 @@ It should also be the same as `COMPONENT_NAME` in the component project.
 * `{navigation.icon}` (***Mandatory***) - Set the navigation icon for the component, see [Material Icons](https://design.google.com/icons/) for a list of icons.
 Note that you should write them as snake case (e.g. `bug_report`).
 
+Each component configuration will be available to the component as well. Access to the configuration is achieved through the `config` service:
+```js
+class FooController {
+    constructor(config) {
+        let componentConfig = config.get('componentConfig');
+    }
+}
+```
+
 
 ### Development
 ---------------
