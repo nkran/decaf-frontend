@@ -121,6 +121,8 @@ You use that to register a component (remember that `COMPONENT_NAME` should matc
 * `{isProjectType: true}` - You can use the second argument to configure the component, in this case it will tell the platform that this is a project component.
 Note that you still need to specify the same `isProjectType` property in `components.config.json`.
 * `dirname(module.id)` - This is just a helper to get the path for where the component resides, you should always use it.
+* `platformProvider.state()` - This sets the states/routes for the component.
+It is just a proxy to Angular UI Router's [$stateProvider.state()](http://angular-ui.github.io/ui-router/site/#/api/ui.router.state.$stateProvider), thus everything you'd configure with it, you also do it with the `platformProvider.state()`.
 
 
 ### Development
