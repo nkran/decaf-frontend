@@ -62,7 +62,10 @@ app.config(function ($mdThemingProvider) {
 });
 
 // Router config
-app.config(function ($urlMatcherFactoryProvider, $stateProvider) {
+app.config(function ($urlMatcherFactoryProvider, $urlRouterProvider, $stateProvider) {
+	// Redirect to home no other route matched
+	$urlRouterProvider.otherwise('/');
+
 	// Optional slash
 	$urlMatcherFactoryProvider.strictMode(false);
 
