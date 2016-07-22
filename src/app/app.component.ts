@@ -97,14 +97,14 @@ class AppController {
 					$window.document.title = `Platform – ${label}`;
 					// Turn of WS inspection for TS
 					// noinspection TypeScriptUnresolvedFunction
-					config.set('component', this.component);
+					config.set('componentConfig', this.component);
 				}
 			} else {
 				$window.document.title = 'Platform';
 				this.component = null;
 				// Turn of WS inspection for TS
 				// noinspection TypeScriptUnresolvedFunction
-				config.set('component', null);
+				config.set('componentConfig', null);
 			}
 		});
 	}
