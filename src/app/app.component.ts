@@ -43,10 +43,11 @@ const app = angular.module('platform', [].concat(
 
 
 // Production config
-// https://docs.angularjs.org/guide/production
 app.config(function ($httpProvider, $compileProvider) {
+	// http://blog.thoughtram.io/angularjs/2015/01/14/exploring-angular-1.3-speed-up-with-applyAsync.html
 	$httpProvider.useApplyAsync(true);
 	if (isProd()) {
+		// https://docs.angularjs.org/guide/production
 		$compileProvider.debugInfoEnabled(false);
 	}
 });
