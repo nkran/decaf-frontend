@@ -1,9 +1,11 @@
-import {module} from 'angular';
 import 'angular-material';
 import 'angular-ui-router';
+
 // Turn of WS TS inspection for the 'decaf-common' import.
 // noinspection TypeScriptCheckImport
 import {sharing, project, config, Config} from 'decaf-common';
+
+// Generated from `components.config.json`
 import COMPONENTS_CONFIG from 'components.config';
 
 import {isProd} from './env';
@@ -32,7 +34,7 @@ const APP_COMPONENTS = [
 	home.name
 ];
 
-const app = module('platform', [].concat(
+const app = angular.module('platform', [].concat(
 	CORE_COMPONENTS,
 	COMMON,
 	COMPONENTS_CONFIG.map((component) => component.name),

@@ -1,11 +1,10 @@
-import {module as ngModule} from 'angular';
 // Turn of WS TS inspection for the 'decaf-common' import.
 // noinspection TypeScriptCheckImport
 import {dirname} from 'decaf-common';
 import './home.component.css!';
 
 
-const home = ngModule('platform.home', []);
+const home = angular.module('platform.home', []);
 
 
 home.config(function ($stateProvider) {

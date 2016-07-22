@@ -1,11 +1,10 @@
-import {module as ngModule} from 'angular';
 // Turn of WS TS inspection for the 'decaf-common' import.
 // noinspection TypeScriptCheckImport
 import {dirname} from 'decaf-common';
 import './login.component.css!';
 
 
-const login = ngModule('platform.login', []);
+const login = angular.module('platform.login', []);
 
 
 login.config(function ($stateProvider) {
