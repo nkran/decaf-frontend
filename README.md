@@ -65,6 +65,58 @@ class FooController {
 ```
 
 
+#### Creating Components
+------------------------
+There are two kinds of components that can be used:
+* [Project Component](https://github.com/biosustain/decaf-frontend-project-module-example)
+* [Component](https://github.com/biosustain/decaf-frontend-module-example)
+
+Both can be installed either by downloading it cloning it (remember that cloning keeps commit history).
+
+Afterwards, navigate to the root of the component via the terminal and run the following commands to install runtime/dev deps:
+* `npm install`
+* `$(npm bin)/typings install`
+
+Now you can run the component as a standalone app (for testing and developing) with `$(npm bin)/gulp serve`.
+
+**NOTE**: See other tasks by running `$(npm bin)/gulp --tasks`.
+
+You should only be working in the `src/` folder of the component and you should never remove `index.ts` unless you know what your're doing.
+
+Furthermore, make sure you export the angular module as default from your component (name does not matter):
+```js
+// src/my-component.component.ts
+import {dirname} from 'decaf-common';
+
+export const COMPONENT_NAME = 'project-example';
+const myComponent = angular.module(COMPONENT_NAME, []);
+
+
+myComponent.config(function (platformProvider) {
+	platformProvider
+		.register(COMPONENT_NAME, {isProjectType: true})
+		.state(COMPONENT_NAME, {
+			url: `/${COMPONENT_NAME}`,
+			views: {
+				'content@': {
+					templateUrl: `${dirname(module.id)}/my-component.component.html`,
+					controller: MyComponentController,
+					controllerAs: 'myComponent'
+				}
+			}
+		});
+});
+
+
+class MyComponentController {
+	constructor() {}
+}
+
+// Note the default export
+export default myComponent;
+```
+
+
 ### Development
 ---------------
 If you wish to build the app for production, use the `$(npm bin)/gulp build --production` task.
