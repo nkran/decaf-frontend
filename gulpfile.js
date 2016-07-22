@@ -220,14 +220,16 @@ gulp.task('build/app', gulp.parallel(
  * Build components
  * Note that, before running this task, `build/deps` must be run.
  */
-let componentsConfig = [];
 let components = new Map();
+let componentsModuleName = [];
+
 gulp.task('build/components', gulp.series(
 	// Build configuration
 	function config(done) {
+		let componentsConfig = new Map();
 		// Reset global vars
-		componentsConfig = [];
 		components = new Map();
+		componentsModuleName = [];
 
 		let stream = gulp
 			.src('./components.config.json')
@@ -245,7 +247,7 @@ gulp.task('build/components', gulp.series(
 						let {name, path} = parseComponent(component);
 
 						// Get component config
-						componentsConfig.push(config);
+						componentsConfig.set(name, config);
 						// Set list of components
 						components.set(name, path);
 					}
@@ -261,19 +263,43 @@ gulp.task('build/components', gulp.series(
 					let contents = '';
 
 					// Set import
-					for (let name of components.keys()) {
-						contents += `import '${name}';\n`;
+					for (let component of components.keys()) {
+						let name = toCamelCase(component);
+
+						// Import default export of component
+						contents += `import ${name} from '${component}';\n`;
+
+						// Set the {name} on the component config to be the exported module name
+						componentsModuleName.push(name);
+						let componentConfig = componentsConfig.get(component);
+						componentConfig.name = `${name}.name`;
+
+						// Generate typings for the above imports.
+						// This ensures that there are not errors thrown during the TS compilation
+						let typings = `declare module '${component}' {\n\tconst ${name}: any;\n\texport default ${name};\n}\n`;
+						this.push(
+							new File({
+								contents: new Buffer(typings),
+								path: `${name}.d.ts`
+							})
+						);
 					}
 
 					// Set states
-					for (let [key, componentConfig] of componentsConfig.entries()) {
+					for (let componentConfig of componentsConfig.values()) {
 						let {isProjectType} = componentConfig;
 						let {state} = componentConfig.navigation;
 						componentConfig.navigation.state = `root.${isProjectType ? 'project.' : ''}${state}`;
 					}
 
 					// Export the components config as default
-					contents += `\nconst COMPONENTS_CONFIG = ${JSON.stringify(componentsConfig, null, 4)};\n`;
+					contents += `\nconst COMPONENTS_CONFIG = ${JSON.stringify(Array.from(componentsConfig.values()), null, 4)};\n`;
+
+					// Remove quotes around the module name
+					for (let name of componentsModuleName) {
+						contents = contents.replace(new RegExp(`(['"])?(${name}\\.name)\\1`, 'g'), `${name}.name`);
+					}
+
 					contents += '\nexport default COMPONENTS_CONFIG;';
 
 					this.push(
@@ -289,7 +315,7 @@ gulp.task('build/components', gulp.series(
 			// TS needs a physical location for the files,
 			// thus the below save in dist.
 			.pipe(gulp.dest(PATHS.dist))
-			.pipe(size(GULP_SIZE_DEFAULT_CONFIG))
+			// .pipe(size(GULP_SIZE_DEFAULT_CONFIG))
 			.pipe(typescript(typescript.createProject('tsconfig.json', {
 				typescript: require('typescript'),
 				noEmitOnError: false,
@@ -301,8 +327,12 @@ gulp.task('build/components', gulp.series(
 
 		stream.on('end', () => {
 			// Cleanup:
-			// 1. Remove generated TS components config (we only need the transpiled one)
-			del([`${PATHS.dist}/components.config.ts`,]).then(() => {
+			// 1. Remove generated typings
+			// 2. Remove generated TS modules config (we only need the transpiled one)
+			let typings = componentsModuleName.map((name) => `${PATHS.dist}/${name}.d.ts`);
+			del([
+				`${PATHS.dist}/components.config.ts`,
+			].concat(typings)).then(() => {
 				done();
 			});
 		});

@@ -1,6 +1,5 @@
 {
 	"github:biosustain/decaf-frontend-module-example": {
-		"name": "example",
 		"color": "#42c8ff",
 		"navigation": {
 			"state": "example",
@@ -9,7 +8,6 @@
 		}
 	},
 	"github:biosustain/decaf-frontend-project-module-example": {
-		"name": "project-example",
 		"isProjectType": true,
 		"navigation": {
 			"state": "project-example",

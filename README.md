@@ -31,7 +31,6 @@ The file is a JSON with the following schema:
     // 2. npm:<package name>
     // 2. <package name>
 	"<component>": {
-		"name": string,
 		"color": string, 
 		"isProjectType": boolean,
 		"navigation": {
@@ -44,14 +43,13 @@ The file is a JSON with the following schema:
 ```
 
 Each of the above configuration properties should be configured as it follows:
-* `{name}` (***Mandatory***) - It should be the same as `<component name>` you used in `platformProvider.register(<component name>)` within the component project.
 * `{color}` (***Optional***) - Sets the color of the sidebar project navigation and the toolbar, alternatively this can also be set programmatically from within the component using `config.set('color', '<color>')`.
 * `{isProjectType}` (***Optional***) - If set to `true`, the component will show up in the project navigation and it will be available to every project as a subroute of the project.
 * `{navigation.state}` (***Mandatory***) - Sets the route at which the component is available.
 If the component is not of project type, it will be available at the root, otherwise it will be a subroute of each of the projects.
-This, like the `{name}` above, it should be the same as `<component name>` you used in `platformProvider.register(<component name>)` within the component project.
+Usually you set this to the root state that you configured within the module via `platformProvider.state()`.
 Of course, you can also point to another state, but make sure you registered the state in one of your components via `platformProvider.state()`.
-* `{navigation.label}` (***Mandatory***) - Set the name of the component (used for setting the document and the toolbar title).
+* `{navigation.label}` (***Mandatory***) - Set the name of the component (used for setting the document and the toolbar title, but also the label for the navigation item in the sidebar).
 * `{navigation.icon}` (***Mandatory***) - Set the navigation icon for the component, see [Material Icons](https://design.google.com/icons/) for a list of icons.
 Note that you should write them as snake case (e.g. `bug_report`).
 
@@ -116,8 +114,7 @@ export default myComponent;
 ```
 
 In the above example, there are a few things that are important:
-* `platformProvider.register(COMPONENT_NAME, {isProjectType: true})` - This is a mandatory action.
-You use that to register a component (remember that `COMPONENT_NAME` should match `{name}` from the platform `components.config.json`).
+* `platformProvider.register(COMPONENT_NAME, {isProjectType: true})` - This is a mandatory action. You use that to register a component.
 * `{isProjectType: true}` - You can use the second argument to configure the component, in this case it will tell the platform that this is a project component.
 Note that you still need to specify the same `isProjectType` property in `components.config.json`.
 * `dirname(module.id)` - This is just a helper to get the path for where the component resides, you should always use it.
