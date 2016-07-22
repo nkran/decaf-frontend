@@ -1,9 +1,9 @@
-# ILoop Platform
+# Decaf Platform
 > A component based project starter.
 
 ### Installation
 ----------------
-Download the [project](https://github.com/biosustain/iloop-platform/archive/master.zip) or clone it `git clone git@github.com:biosustain/decaf-frontend.git`.
+Download the [project](https://github.com/biosustain/decaf-frontend/archive/master.zip) or clone it `git clone git@github.com:biosustain/decaf-frontend.git`.
 
 **NOTE**: Cloning this project will also keep all the commit history, so if you wish to start with a fresh commit history, I advise downloading it.
 
