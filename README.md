@@ -118,7 +118,7 @@ export default myComponent;
 In the above example, there are a few things that are important:
 * `platformProvider.register(COMPONENT_NAME, {isProjectType: true})` - This is a mandatory action.
 You use that to register a component (remember that `COMPONENT_NAME` should match `{name}` from the platform `components.config.json`).
-* `{isProjectType: true}` - You can use the second argument to configure the component, in this case `{isProjectType: true}` will tell the platform that this is a project component.
+* `{isProjectType: true}` - You can use the second argument to configure the component, in this case it will tell the platform that this is a project component.
 Note that you still need to specify the same `isProjectType` property in `components.config.json`.
 
 
