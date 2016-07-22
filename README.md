@@ -44,12 +44,13 @@ The file is a JSON with the following schema:
 ```
 
 Each of the above configuration properties should be configured as it follows:
-* `{name}` (***Mandatory***) - It should be the same as `COMPONENT_NAME` in the component project.
+* `{name}` (***Mandatory***) - It should be the same as `<component name>` you used in `platformProvider.register(<component name>)` within the component project.
 * `{color}` (***Optional***) - Sets the color of the sidebar project navigation and the toolbar, alternatively this can also be set programmatically from within the component using `config.set('color', '<color>')`.
 * `{isProjectType}` (***Optional***) - If set to `true`, the component will show up in the project navigation and it will be available to every project as a subroute of the project.
 * `{navigation.state}` (***Mandatory***) - Sets the route at which the component is available.
 If the component is not of project type, it will be available at the root, otherwise it will be a subroute of each of the projects.
-It should also be the same as `COMPONENT_NAME` in the component project.
+This, like the `{name}` above, it should be the same as `<component name>` you used in `platformProvider.register(<component name>)` within the component project.
+Of course, you can also point to another state, but make sure you registered the state in one of your components via `platformProvider.state()`.
 * `{navigation.label}` (***Mandatory***) - Set the name of the component (used for setting the document and the toolbar title).
 * `{navigation.icon}` (***Mandatory***) - Set the navigation icon for the component, see [Material Icons](https://design.google.com/icons/) for a list of icons.
 Note that you should write them as snake case (e.g. `bug_report`).
