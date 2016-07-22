@@ -124,6 +124,10 @@ Note that you still need to specify the same `isProjectType` property in `compon
 * `platformProvider.state()` - This sets the states/routes for the component.
 It is just a proxy to Angular UI Router's [$stateProvider.state()](http://angular-ui.github.io/ui-router/site/#/api/ui.router.state.$stateProvider), thus everything you'd configure with it, you also do it with the `platformProvider.state()`.
 
+Note that the `{view}` property of the state contains the key `content@`.
+That will be the entry point of the component markup when navigating to the component route or any subroutes of the component.
+Besides `content@`, you also have the option to overide the toolbar by providing a view with the key `toolbar@`.
+
 
 ### Development
 ---------------
