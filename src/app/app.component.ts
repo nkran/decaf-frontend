@@ -82,8 +82,14 @@ app.config(function ($urlMatcherFactoryProvider, $urlRouterProvider, $stateProvi
 class AppController {
 	components: any[] = COMPONENTS_CONFIG;
 	component: any = null;
+	sharing: any;
 
-	constructor($rootScope, $window, private config: Config) {
+	constructor($rootScope, $window, private config: Config, sharing) {
+		// Listen for share changes
+		$rootScope.$on('share-change', (event, targets) => {
+			this.sharing = {targets, open: sharing.open};
+		});
+
 		// Set title
 		// 1. Set document title
 		// 2. Set toolbar title

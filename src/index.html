@@ -34,7 +34,22 @@
 				<!--</md-list>-->
 			</app-navigation>
 			<app-toolbar>
-				App toolbar from index.html
+				<md-menu ng-show="app.sharing.targets.length" md-position-mode="target-right target">
+					<md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
+						<md-icon>share</md-icon>
+					</md-button>
+
+					<md-menu-content width="4">
+						<md-menu-item ng-repeat="target in app.sharing.targets">
+							<md-button ng-click="app.sharing.open(target.state)">
+								<div layout="row">
+									<p flex>{{target.name}}</p>
+									<md-icon md-menu-align-target>share</md-icon>
+								</div>
+							</md-button>
+						</md-menu-item>
+					</md-menu-content>
+				</md-menu>
 			</app-toolbar>
 		</app>
 
