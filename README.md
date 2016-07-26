@@ -126,6 +126,94 @@ That will be the entry point of the component markup when navigating to the comp
 Besides `content@`, you also have the option to overide the toolbar by providing a view with the key `toolbar@`.
 
 
+#### Sharing Data
+If you wish to share data between components, you can use the `sharing` provider to do so.
+Let's assume you have two components `foo` and `bar`, and you'd like for component `foo` to send some data to component `bar` when navigating from `foo` to `bar`.
+In this scenario you'd have to setup component `foo` as it follows:
+```js
+import {Config, dirname} from 'decaf-common';
+
+
+export const COMPONENT_NAME = 'foo';
+const foo = angular.module(COMPONENT_NAME, []);
+
+
+foo.config(function (platformProvider) {
+	platformProvider
+		.register(COMPONENT_NAME)
+		.state(COMPONENT_NAME, {
+			url: `/${COMPONENT_NAME}`,
+			views: {
+				'content@': {
+					templateUrl: `${dirname(module.id)}/foo.component.html`,
+					controller: FooComponentController,
+					controllerAs: 'foo'
+				}
+			}
+        });
+});
+
+class FooComponentController {
+	data = [{
+		carrots: 10
+	}];
+
+	constructor($scope, sharing) {
+		sharing.provide($scope, {
+		    // NOTE: The value for `{data}` points to property declared on this class, thus make sure that the
+		    // `{controllerAs: '<name>'}` matches with `<name>.<property>`.
+			data: 'foo.data'
+		});
+	}
+}
+
+
+export default foo;
+```
+
+And in oder to access the data sent from `foo`, `bar` would have the following setup:
+```js
+import {Config, dirname} from 'decaf-common';
+
+
+export const COMPONENT_NAME = 'bar';
+const bar = angular.module(COMPONENT_NAME, []);
+
+
+bar.config(function (platformProvider) {
+	platformProvider
+		.register(COMPONENT_NAME, {
+            sharing: {
+                // NOTE: `'vegetables'` should match the property name that you declared in the componet `foo` from `{data: 'foo.vegetables'}`
+                // {multiple: true} denotes that the component sent an Array.
+                accept: [{type: 'vegetables', multiple: true}],
+                // Use `{name}` to set the name of the item in the sharing menu
+                name: 'Example Component'
+            }
+        })
+		.state(COMPONENT_NAME, {
+			url: `/${COMPONENT_NAME}`,
+			views: {
+				'content@': {
+					templateUrl: `${dirname(module.id)}/bar.component.html`,
+					controller: BarComponentController,
+					controllerAs: 'bar'
+				}
+			}
+        });
+});
+
+class BarComponentController {
+	constructor(sharing) {
+		const data = sharing.items('data');
+	}
+}
+
+
+export default bar;
+```
+
+
 ### Development
 ---------------
 If you wish to build the app for production, use the `$(npm bin)/gulp build --production` task.
