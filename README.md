@@ -148,21 +148,29 @@ foo.config(function (platformProvider) {
 					templateUrl: `${dirname(module.id)}/foo.component.html`,
 					controller: FooComponentController,
 					controllerAs: 'foo'
-				}
+				},
+				'toolbar@': {
+                    template: `
+                        <h1 flex>
+                        	Foo
+                        </h1>
+                        <sharing-menu></sharing-menu>
+                    `
+                }
 			}
         });
 });
 
 class FooComponentController {
-	data = [{
+	food = [{
 		carrots: 10
 	}];
 
 	constructor($scope, sharing) {
 		sharing.provide($scope, {
-		    // NOTE: The value for `{data}` points to property declared on this class, thus make sure that the
+		    // NOTE: The value for `{food}` points to property declared on this class, thus make sure that the
 		    // `{controllerAs: '<name>'}` matches with `<name>.<property>`.
-			data: 'foo.data'
+			food: 'foo.food'
 		});
 	}
 }
@@ -170,6 +178,9 @@ class FooComponentController {
 
 export default foo;
 ```
+
+Note the use of `toolbar@` view property, this sets the toolbar content when on the component route.
+You will use that to show the `<sharing-menu>`, with which you will send the data to the `bar` component.
 
 And in oder to access the data sent from `foo`, `bar` would have the following setup:
 ```js
@@ -184,9 +195,9 @@ bar.config(function (platformProvider) {
 	platformProvider
 		.register(COMPONENT_NAME, {
             sharing: {
-                // NOTE: `'vegetables'` should match the property name that you declared in the componet `foo` from `{data: 'foo.vegetables'}`
+                // NOTE: `'food'` should match the property name that you declared in the componet `foo` from `{food: 'foo.food'}`
                 // {multiple: true} denotes that the component sent an Array.
-                accept: [{type: 'vegetables', multiple: true}],
+                accept: [{type: 'food', multiple: true}],
                 // Use `{name}` to set the name of the item in the sharing menu
                 name: 'Example Component'
             }
@@ -205,7 +216,7 @@ bar.config(function (platformProvider) {
 
 class BarComponentController {
 	constructor(sharing) {
-		const data = sharing.items('data');
+		const food = sharing.items('food');
 	}
 }
 
