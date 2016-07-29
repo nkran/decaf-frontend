@@ -1,0 +1,10 @@
+nginx:
+  build: ./nginx
+  ports:
+   - 80:80
+  volumes_from:
+   - frontend
+frontend:
+  build: .
+  volumes:
+   - /usr/share/frontend

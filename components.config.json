@@ -1,18 +1,10 @@
 {
-	"github:biosustain/decaf-frontend-module-example": {
-		"color": "#42c8ff",
+	"github:DD-DeCaF/decaf-frontend-module-pathways": {
+		"color": "#baacc7",
 		"navigation": {
-			"state": "example",
-			"label": "Example Component",
-			"icon": "apps"
-		}
-	},
-	"github:biosustain/decaf-frontend-project-module-example": {
-		"isProjectType": true,
-		"navigation": {
-			"state": "project-example",
-			"label": "Example Project Component",
-			"icon": "apps"
+			"state": "pathways",
+			"label": "Heterologous Pathways",
+			"icon": "timeline"
 		}
 	}
 }
