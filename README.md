@@ -230,5 +230,6 @@ export default bar;
 If you wish to build the app for production, use the `$(npm bin)/gulp build --production` task.
 
 I also advise linting the source files before you commit, use `$(npm bin)/gulp lint`.
+Furthermore, you can also run integration tests using `$(npm bin)/gulp test/e2e`.
 
 For other tasks run `$(npm bin)/gulp --tasks`.
