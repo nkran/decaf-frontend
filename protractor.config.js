@@ -75,7 +75,13 @@ module.exports.config = Object.assign(config, {
 	},
 	plugins: [
 		{
-			package: 'protractor-console-plugin'
+			package: 'protractor-console-plugin',
+			failOnWarning: false,
+			failOnError: true,
+			logWarnings: true,
+			exclude: [
+				'info'
+			]
 		},
 		{
 			package: 'protractor-accessibility-plugin',
