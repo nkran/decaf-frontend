@@ -1,5 +1,5 @@
 const {create} = require('browser-sync');
-const {exec} = require('child_process');
+const {exec, spawn} = require('child_process');
 const del = require('del');
 const {readFileSync} = require('fs');
 const gulp = require('gulp');
@@ -414,18 +414,85 @@ gulp.task('build', gulp.series(
  */
 gulp.task(function lint(done) {
 	return gulp
-			.src(PATHS.src.ts)
-			.pipe(plumber())
-			.pipe(tslint({
-				tslint: require('tslint') // Use a different version of tslint
-			}))
-			.pipe(tslint.report('verbose', {
-				summarizeFailureOutput: true,
-				emitError: true
-			}))
-			.on('error', (error) => done(error));
+		.src(PATHS.src.ts)
+		.pipe(plumber())
+		.pipe(tslint({
+			tslint: require('tslint') // Use a different version of tslint
+		}))
+		.pipe(tslint.report('verbose', {
+			summarizeFailureOutput: true,
+			emitError: true
+		}))
+		.on('error', (error) => done(error));
 });
 
+
+/**
+ * Update selenium webdriver
+ */
+gulp.task('webdriver/update', function () {
+	const proc = spawn(
+		process.platform === 'win32' ? 'node_modules\\.bin\\webdriver-manager' : 'node_modules/.bin/webdriver-manager',
+		['update']
+	);
+
+	proc.stdout.pipe(split()).on('data', (line) => {
+		console.log(line);
+	});
+	proc.stderr.pipe(split()).on('data', (line) => {
+		console.log(line);
+	});
+
+	return proc;
+});
+
+/**
+ * Run E2E tests locally on Chrome:
+ * 1. Build the app
+ * 2. Update selenium webdriver
+ * 3. Start webserver
+ * 4. Run tests
+ */
+gulp.task('test/e2e', gulp.series(
+	gulp.parallel(
+		'build',
+		'webdriver/update'
+	),
+	function test(done) {
+		// We do not want conflicts with other ports.
+		// We also do not want to open the app in the browser as Protractor will do that for us.
+		// And we don't want any notifications from BS.
+		const port = 3010;
+		bs.init(Object.assign({}, BS_CONFIG, {port, open: false, notify: false}), () => {
+			const proc = spawn(
+				process.platform === 'win32' ? 'node_modules\\.bin\\protractor' : 'node_modules/.bin/protractor',
+				[
+					'protractor.config.js',
+					'--baseUrl',
+					`http://localhost:${port}`
+				]
+			);
+
+			proc.stdout.pipe(split()).on('data', (line) => {
+				console.log(line);
+			});
+			proc.stderr.pipe(split()).on('data', (line) => {
+				console.log(line);
+			});
+
+			proc.on('close', (error) => {
+				if (error) {
+					// Let gulp know that the tests failed
+					done(new Error('Some specs have failed.'));
+				} else {
+					done();
+				}
+				process.exit(error);
+				bs.exit();
+			});
+		});
+	}
+));
 
 
 /**
