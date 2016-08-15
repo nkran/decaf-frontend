@@ -82,14 +82,8 @@ app.config(function ($urlMatcherFactoryProvider, $urlRouterProvider, $stateProvi
 class AppController {
 	components: any[] = COMPONENTS_CONFIG;
 	component: any = null;
-	sharing: any;
 
-	constructor($rootScope, $window, private config: Config, sharing) {
-		// Listen for share changes
-		$rootScope.$on('share-change', (event, targets) => {
-			this.sharing = {targets, open: sharing.open};
-		});
-
+	constructor($rootScope, $window, private config: Config) {
 		// Set title
 		// 1. Set document title
 		// 2. Set toolbar title
@@ -143,6 +137,7 @@ app.component('app', {
 	},
 	template: `
 		<div layout="row" flex ui-view="root">
+			<!-- TODO: we need a menu icon that can open the sidebar when sidebar is hidden (small screen size) -->
 			<md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
 				<project-nav components="app.components" project="app.project" color="app.color || app.component.color"></project-nav>
 				<div ng-transclude="navigation"></div>

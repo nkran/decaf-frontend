@@ -21,16 +21,6 @@ home.config(function ($stateProvider) {
 });
 
 
-class HomeController {
-	data = [{
-		carrots: 10
-	}];
-
-	constructor($scope, sharing) {
-		sharing.provide($scope, {
-			data: 'home.data'
-		});
-	}
-}
+class HomeController {}
 
 export default home;
