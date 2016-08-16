@@ -336,33 +336,33 @@ gulp.task('build/components', gulp.series(
 				done();
 			});
 		});
-	},
-	// Install each component as jspm packages
-	function install() {
-		let proc;
-
-		let packagesString = '';
-		for (let [name, path] of components.entries()) {
-			packagesString += `${name}=${path} `;
-		}
-
-		proc = exec(`${__dirname}/node_modules/.bin/jspm install ${packagesString}`, {cwd: PATHS.dist});
-
-		proc.stdout
-			.pipe(split())
-			.on('data', (data) => log(data));
-		proc.stderr
-			.pipe(split())
-			.on('data', (data) => log(data));
-
-		proc.on('close', () => {
-			// Reload the browser.
-			// Only when BS is running.
-			bs.reload('components.config.json');
-		});
-
-		return proc;
 	}
+	// Install each component as jspm packages
+	// function install() {
+	// 	let proc;
+    //
+	// 	let packagesString = '';
+	// 	for (let [name, path] of components.entries()) {
+	// 		packagesString += `${name}=${path} `;
+	// 	}
+    //
+	// 	proc = exec(`${__dirname}/node_modules/.bin/jspm install ${packagesString}`, {cwd: PATHS.dist});
+    //
+	// 	proc.stdout
+	// 		.pipe(split())
+	// 		.on('data', (data) => log(data));
+	// 	proc.stderr
+	// 		.pipe(split())
+	// 		.on('data', (data) => log(data));
+    //
+	// 	proc.on('close', () => {
+	// 		// Reload the browser.
+	// 		// Only when BS is running.
+	// 		bs.reload('components.config.json');
+	// 	});
+    //
+	// 	return proc;
+	// }
 ));
 
 function toCamelCase(name) {

@@ -6,5 +6,13 @@
 			"label": "Heterologous Pathways",
 			"icon": "timeline"
 		}
+	},
+	"github:DD-DeCaF/module-theoretical-yield": {
+		"color": "#ab5c68",
+		"navigation": {
+			"state": "theoretical-yield",
+			"label": "Theoretical Yields",
+			"icon": "group_work"
+		}
 	}
 }
