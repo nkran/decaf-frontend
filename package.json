@@ -50,6 +50,7 @@
     "jspm": {
         "dependencies": {
             "DD-DeCaF/decaf-frontend-module-pathways": "github:DD-DeCaF/decaf-frontend-module-pathways@master",
+            "DD-DeCaF/module-pathways": "github:DD-DeCaF/module-pathways@master",
             "DD-DeCaF/module-theoretical-yield": "github:DD-DeCaF/module-theoretical-yield@master",
             "css": "github:systemjs/plugin-css@^0.1.23",
             "decaf-common": "github:biosustain/decaf-frontend-common@master"
@@ -147,7 +148,7 @@
                     }
                 }
             },
-            "github:angular/bower-material@1.0.9": {
+            "github:angular/bower-material@1.1.0": {
                 "main": "angular-material",
                 "registry": "jspm",
                 "dependencies": {
@@ -235,6 +236,9 @@
                 ]
             },
             "npm:jquery@2.2.4": {
+                "format": "amd"
+            },
+            "npm:jquery@3.1.0": {
                 "format": "amd"
             },
             "npm:readable-stream@1.0.34": {

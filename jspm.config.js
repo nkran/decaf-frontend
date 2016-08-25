@@ -29,6 +29,7 @@ SystemJS.config({
 		"npm:*.json"
 	],
 	map: {
+		"DD-DeCaF/module-pathways": "github:DD-DeCaF/module-pathways@master",
 		"DD-DeCaF/decaf-frontend-module-pathways": "github:DD-DeCaF/decaf-frontend-module-pathways@master",
 		"DD-DeCaF/module-theoretical-yield": "github:DD-DeCaF/module-theoretical-yield@master",
 		"assert": "github:jspm/nodelibs-assert@0.2.0-alpha",
@@ -38,9 +39,9 @@ SystemJS.config({
 		"constants": "github:jspm/nodelibs-constants@0.2.0-alpha",
 		"crypto": "github:jspm/nodelibs-crypto@0.2.0-alpha",
 		"decaf-common": "github:biosustain/decaf-frontend-common@master",
-		"css": "github:systemjs/plugin-css@0.1.26",
+		"css": "github:systemjs/plugin-css@0.1.27",
 		"angular": "github:angular/bower-angular@1.5.7",
-		"angular-material": "github:angular/bower-material@1.0.9",
+		"angular-material": "github:angular/bower-material@1.1.0",
 		"angular-ui-router": "github:angular-ui/angular-ui-router-bower@0.3.1",
 		"dgram": "github:jspm/nodelibs-dgram@0.2.0-alpha",
 		"dns": "github:jspm/nodelibs-dns@0.2.0-alpha",
@@ -72,14 +73,6 @@ SystemJS.config({
 		"zlib": "github:jspm/nodelibs-zlib@0.2.0-alpha"
 	},
 	packages: {
-		"github:angular/bower-material@1.0.9": {
-			"map": {
-				"css": "github:systemjs/plugin-css@0.1.26",
-				"angular-aria": "github:angular/bower-angular-aria@1.5.8",
-				"angular-animate": "github:angular/bower-angular-animate@1.5.8",
-				"angular": "github:angular/bower-angular@1.5.7"
-			}
-		},
 		"github:angular-ui/angular-ui-router-bower@0.3.1": {
 			"map": {
 				"angular": "github:angular/bower-angular@1.5.7"
@@ -89,7 +82,7 @@ SystemJS.config({
 			"map": {
 				"plotly.js": "npm:plotly.js@1.16.2",
 				"decaf-common": "github:biosustain/decaf-frontend-common@master",
-				"css": "github:systemjs/plugin-css@0.1.26"
+				"css": "github:systemjs/plugin-css@0.1.27"
 			}
 		},
 		"npm:plotly.js@1.16.2": {
@@ -444,7 +437,7 @@ SystemJS.config({
 		"npm:stream-browserify@2.0.1": {
 			"map": {
 				"inherits": "npm:inherits@2.0.1",
-				"readable-stream": "npm:readable-stream@2.1.4"
+				"readable-stream": "npm:readable-stream@2.1.5"
 			}
 		},
 		"npm:stream-http@2.3.1": {
@@ -452,7 +445,7 @@ SystemJS.config({
 				"inherits": "npm:inherits@2.0.1",
 				"to-arraybuffer": "npm:to-arraybuffer@1.0.1",
 				"builtin-status-codes": "npm:builtin-status-codes@2.0.0",
-				"readable-stream": "npm:readable-stream@2.1.4",
+				"readable-stream": "npm:readable-stream@2.1.5",
 				"xtend": "npm:xtend@4.0.1"
 			}
 		},
@@ -989,7 +982,7 @@ SystemJS.config({
 		},
 		"github:jspm/nodelibs-buffer@0.2.0-alpha": {
 			"map": {
-				"buffer-browserify": "npm:buffer@4.9.0"
+				"buffer-browserify": "npm:buffer@4.9.1"
 			}
 		},
 		"npm:colormap@2.2.0": {
@@ -2292,9 +2285,9 @@ SystemJS.config({
 				"jquery": "npm:jquery@3.1.0",
 				"escher-vis": "npm:escher-vis@1.4.4",
 				"d3": "npm:d3@3.5.6",
-				"css": "github:systemjs/plugin-css@0.1.26",
+				"css": "github:systemjs/plugin-css@0.1.27",
 				"decaf-common": "github:biosustain/decaf-frontend-common@master",
-				"angular-material": "github:angular/bower-material@1.0.9",
+				"angular-material": "github:angular/bower-material@1.1.0",
 				"twbs-bootstrap": "github:twbs/bootstrap@3.3.7"
 			}
 		},
@@ -2311,6 +2304,43 @@ SystemJS.config({
 		"github:twbs/bootstrap@3.3.7": {
 			"map": {
 				"jquery": "npm:jquery@2.2.4"
+			}
+		},
+		"github:DD-DeCaF/module-pathways@master": {
+			"map": {
+				"d3": "npm:d3@3.5.6",
+				"jquery": "npm:jquery@3.1.0",
+				"escher-vis": "npm:escher-vis@1.4.4",
+				"css": "github:systemjs/plugin-css@0.1.27",
+				"decaf-common": "github:biosustain/decaf-frontend-common@master",
+				"angular-material": "github:angular/bower-material@1.1.0",
+				"twbs-bootstrap": "github:twbs/bootstrap@3.3.7"
+			}
+		},
+		"npm:readable-stream@2.1.5": {
+			"map": {
+				"inherits": "npm:inherits@2.0.1",
+				"buffer-shims": "npm:buffer-shims@1.0.0",
+				"core-util-is": "npm:core-util-is@1.0.2",
+				"isarray": "npm:isarray@1.0.0",
+				"string_decoder": "npm:string_decoder@0.10.31",
+				"process-nextick-args": "npm:process-nextick-args@1.0.7",
+				"util-deprecate": "npm:util-deprecate@1.0.2"
+			}
+		},
+		"npm:buffer@4.9.1": {
+			"map": {
+				"isarray": "npm:isarray@1.0.0",
+				"base64-js": "npm:base64-js@1.1.2",
+				"ieee754": "npm:ieee754@1.1.6"
+			}
+		},
+		"github:angular/bower-material@1.1.0": {
+			"map": {
+				"angular": "github:angular/bower-angular@1.5.7",
+				"css": "github:systemjs/plugin-css@0.1.27",
+				"angular-aria": "github:angular/bower-angular-aria@1.5.8",
+				"angular-animate": "github:angular/bower-angular-animate@1.5.8"
 			}
 		}
 	}
