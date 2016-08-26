@@ -30,7 +30,6 @@ SystemJS.config({
 	],
 	map: {
 		"DD-DeCaF/module-pathways": "github:DD-DeCaF/module-pathways@master",
-		"DD-DeCaF/decaf-frontend-module-pathways": "github:DD-DeCaF/decaf-frontend-module-pathways@master",
 		"DD-DeCaF/module-theoretical-yield": "github:DD-DeCaF/module-theoretical-yield@master",
 		"assert": "github:jspm/nodelibs-assert@0.2.0-alpha",
 		"browserify": "npm:browserify@13.1.0",

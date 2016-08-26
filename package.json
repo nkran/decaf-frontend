@@ -49,7 +49,6 @@
     },
     "jspm": {
         "dependencies": {
-            "DD-DeCaF/decaf-frontend-module-pathways": "github:DD-DeCaF/decaf-frontend-module-pathways@master",
             "DD-DeCaF/module-pathways": "github:DD-DeCaF/module-pathways@master",
             "DD-DeCaF/module-theoretical-yield": "github:DD-DeCaF/module-theoretical-yield@master",
             "css": "github:systemjs/plugin-css@^0.1.23",
