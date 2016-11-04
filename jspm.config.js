@@ -35,13 +35,13 @@ SystemJS.config({
 		"assert": "github:jspm/nodelibs-assert@0.2.0-alpha",
 		"browserify": "npm:browserify@13.1.0",
 		"buffer": "github:jspm/nodelibs-buffer@0.2.0-alpha",
-		"child_process": "github:jspm/nodelibs-child_process@0.2.0-alpha",
+		"child_process": "npm:jspm-nodelibs-child_process@0.2.0",
 		"constants": "github:jspm/nodelibs-constants@0.2.0-alpha",
 		"crypto": "github:jspm/nodelibs-crypto@0.2.0-alpha",
 		"decaf-common": "github:biosustain/decaf-frontend-common@master",
 		"css": "github:systemjs/plugin-css@0.1.32",
 		"angular": "github:angular/bower-angular@1.5.7",
-		"angular-material": "github:angular/bower-material@1.1.0",
+		"angular-material": "github:angular/bower-material@1.1.1",
 		"angular-ui-router": "github:angular-ui/angular-ui-router-bower@0.3.1",
 		"dgram": "github:jspm/nodelibs-dgram@0.2.0-alpha",
 		"dns": "github:jspm/nodelibs-dns@0.2.0-alpha",
@@ -50,11 +50,12 @@ SystemJS.config({
 		"events": "github:jspm/nodelibs-events@0.2.0-alpha",
 		"fs": "github:jspm/nodelibs-fs@0.2.0-alpha",
 		"http": "github:jspm/nodelibs-http@0.2.0-alpha",
-		"https": "github:jspm/nodelibs-https@0.2.0-alpha",
+		"https": "npm:jspm-nodelibs-https@0.2.1",
 		"jodid25519": "npm:jodid25519@1.0.2",
 		"jsbn": "npm:jsbn@0.1.0",
 		"module": "github:jspm/nodelibs-module@0.2.0-alpha",
 		"net": "github:jspm/nodelibs-net@0.2.0-alpha",
+		"nkran/module-pathways": "github:nkran/module-pathways@escher-service",
 		"os": "github:jspm/nodelibs-os@0.2.0-alpha",
 		"path": "github:jspm/nodelibs-path@0.2.0-alpha",
 		"process": "github:jspm/nodelibs-process@0.2.0-alpha",
@@ -2255,16 +2256,6 @@ SystemJS.config({
 				"is-buffer": "npm:is-buffer@1.1.4"
 			}
 		},
-		"npm:escher-vis@1.4.4": {
-			"map": {
-				"d3": "npm:d3@3.5.17",
-				"underscore": "npm:underscore@1.8.3",
-				"filesaverjs": "npm:filesaverjs@0.2.2",
-				"mousetrap": "npm:mousetrap@1.6.0",
-				"vkbeautify": "npm:vkbeautify@0.99.1",
-				"baconjs": "npm:baconjs@0.7.85"
-			}
-		},
 		"github:twbs/bootstrap@3.3.7": {
 			"map": {
 				"jquery": "npm:jquery@2.2.4"
@@ -2273,12 +2264,13 @@ SystemJS.config({
 		"github:DD-DeCaF/module-pathways@master": {
 			"map": {
 				"d3": "npm:d3@3.5.6",
-				"jquery": "npm:jquery@3.1.0",
-				"escher-vis": "npm:escher-vis@1.4.4",
+				"jquery": "npm:jquery@3.1.1",
+				"escher-vis": "npm:escher-vis@1.5.0",
 				"css": "github:systemjs/plugin-css@0.1.32",
 				"decaf-common": "github:biosustain/decaf-frontend-common@master",
-				"angular-material": "github:angular/bower-material@1.1.0",
-				"twbs-bootstrap": "github:twbs/bootstrap@3.3.7"
+				"angular-material": "github:angular/bower-material@1.1.1",
+				"twbs-bootstrap": "github:twbs/bootstrap@3.3.7",
+				"escher": "github:nkran/escher@master"
 			}
 		},
 		"npm:readable-stream@2.1.5": {
@@ -2297,14 +2289,6 @@ SystemJS.config({
 				"isarray": "npm:isarray@1.0.0",
 				"base64-js": "npm:base64-js@1.2.0",
 				"ieee754": "npm:ieee754@1.1.8"
-			}
-		},
-		"github:angular/bower-material@1.1.0": {
-			"map": {
-				"angular": "github:angular/bower-angular@1.5.7",
-				"css": "github:systemjs/plugin-css@0.1.32",
-				"angular-aria": "github:angular/bower-angular-aria@1.5.8",
-				"angular-animate": "github:angular/bower-angular-animate@1.5.8"
 			}
 		},
 		"github:DD-DeCaF/pathway-vis@master": {
@@ -2358,6 +2342,35 @@ SystemJS.config({
 				"bn.js": "npm:bn.js@4.11.6",
 				"inherits": "npm:inherits@2.0.3",
 				"minimalistic-assert": "npm:minimalistic-assert@1.0.0"
+			}
+		},
+		"npm:escher-vis@1.5.0": {
+			"map": {
+				"d3": "npm:d3@3.5.17",
+				"underscore": "npm:underscore@1.8.3",
+				"mousetrap": "npm:mousetrap@1.6.0",
+				"vkbeautify": "npm:vkbeautify@0.99.1",
+				"baconjs": "npm:baconjs@0.7.88",
+				"filesaverjs": "npm:filesaverjs@0.2.2"
+			}
+		},
+		"github:angular/bower-material@1.1.1": {
+			"map": {
+				"angular": "github:angular/bower-angular@1.5.7",
+				"css": "github:systemjs/plugin-css@0.1.32",
+				"angular-aria": "github:angular/bower-angular-aria@1.5.8",
+				"angular-animate": "github:angular/bower-angular-animate@1.5.8"
+			}
+		},
+		"github:nkran/module-pathways@escher-service": {
+			"map": {
+				"escher-vis": "npm:escher-vis@1.5.0",
+				"jquery": "npm:jquery@3.1.1",
+				"d3": "npm:d3@3.5.6",
+				"escher": "github:nkran/escher@master",
+				"decaf-common": "github:biosustain/decaf-frontend-common@master",
+				"css": "github:systemjs/plugin-css@0.1.32",
+				"twbs-bootstrap": "github:twbs/bootstrap@3.3.7"
 			}
 		}
 	}
