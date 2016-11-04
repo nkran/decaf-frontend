@@ -51,6 +51,7 @@
         "dependencies": {
             "DD-DeCaF/module-pathways": "github:DD-DeCaF/module-pathways@master",
             "DD-DeCaF/module-theoretical-yield": "github:DD-DeCaF/module-theoretical-yield@master",
+            "DD-DeCaF/pathway-vis": "github:DD-DeCaF/pathway-vis@master",
             "css": "github:systemjs/plugin-css@^0.1.23",
             "decaf-common": "github:biosustain/decaf-frontend-common@master"
         },
@@ -210,6 +211,14 @@
                     "_stream_transform": "readable-stream/transform"
                 }
             },
+            "npm:d3@3.5.14": {
+                "meta": {
+                    "d3.js": {
+                        "exports": "d3",
+                        "format": "global"
+                    }
+                }
+            },
             "npm:d3@3.5.17": {
                 "meta": {
                     "d3.js": {
@@ -234,11 +243,22 @@
                     "test.js"
                 ]
             },
+            "npm:inherits@2.0.3": {
+                "ignore": [
+                    "test.js"
+                ]
+            },
             "npm:jquery@2.2.4": {
                 "format": "amd"
             },
             "npm:jquery@3.1.0": {
                 "format": "amd"
+            },
+            "npm:lodash@4.16.6": {
+                "map": {
+                    "buffer": "@empty",
+                    "process": "@empty"
+                }
             },
             "npm:readable-stream@1.0.34": {
                 "map": {

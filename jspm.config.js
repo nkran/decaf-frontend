@@ -29,6 +29,7 @@ SystemJS.config({
 		"npm:*.json"
 	],
 	map: {
+		"DD-DeCaF/pathway-vis": "github:DD-DeCaF/pathway-vis@master",
 		"DD-DeCaF/module-pathways": "github:DD-DeCaF/module-pathways@master",
 		"DD-DeCaF/module-theoretical-yield": "github:DD-DeCaF/module-theoretical-yield@master",
 		"assert": "github:jspm/nodelibs-assert@0.2.0-alpha",
@@ -38,7 +39,7 @@ SystemJS.config({
 		"constants": "github:jspm/nodelibs-constants@0.2.0-alpha",
 		"crypto": "github:jspm/nodelibs-crypto@0.2.0-alpha",
 		"decaf-common": "github:biosustain/decaf-frontend-common@master",
-		"css": "github:systemjs/plugin-css@0.1.27",
+		"css": "github:systemjs/plugin-css@0.1.32",
 		"angular": "github:angular/bower-angular@1.5.7",
 		"angular-material": "github:angular/bower-material@1.1.0",
 		"angular-ui-router": "github:angular-ui/angular-ui-router-bower@0.3.1",
@@ -81,7 +82,7 @@ SystemJS.config({
 			"map": {
 				"plotly.js": "npm:plotly.js@1.16.2",
 				"decaf-common": "github:biosustain/decaf-frontend-common@master",
-				"css": "github:systemjs/plugin-css@0.1.27"
+				"css": "github:systemjs/plugin-css@0.1.32"
 			}
 		},
 		"npm:plotly.js@1.16.2": {
@@ -435,7 +436,7 @@ SystemJS.config({
 		},
 		"npm:stream-browserify@2.0.1": {
 			"map": {
-				"inherits": "npm:inherits@2.0.1",
+				"inherits": "npm:inherits@2.0.3",
 				"readable-stream": "npm:readable-stream@2.1.5"
 			}
 		},
@@ -544,7 +545,7 @@ SystemJS.config({
 		},
 		"github:jspm/nodelibs-http@0.2.0-alpha": {
 			"map": {
-				"http-browserify": "npm:stream-http@2.3.1"
+				"http-browserify": "npm:stream-http@2.5.0"
 			}
 		},
 		"npm:3d-view@2.0.0": {
@@ -1032,7 +1033,7 @@ SystemJS.config({
 		},
 		"npm:sha.js@2.4.5": {
 			"map": {
-				"inherits": "npm:inherits@2.0.1"
+				"inherits": "npm:inherits@2.0.3"
 			}
 		},
 		"npm:ndarray-pack@1.2.1": {
@@ -1079,8 +1080,8 @@ SystemJS.config({
 		},
 		"npm:crypto-browserify@3.11.0": {
 			"map": {
-				"inherits": "npm:inherits@2.0.1",
-				"pbkdf2": "npm:pbkdf2@3.0.4",
+				"inherits": "npm:inherits@2.0.3",
+				"pbkdf2": "npm:pbkdf2@3.0.9",
 				"public-encrypt": "npm:public-encrypt@4.0.0",
 				"diffie-hellman": "npm:diffie-hellman@5.0.2",
 				"randombytes": "npm:randombytes@2.0.3",
@@ -1531,11 +1532,6 @@ SystemJS.config({
 				"uniq": "npm:uniq@1.0.1"
 			}
 		},
-		"npm:pbkdf2@3.0.4": {
-			"map": {
-				"create-hmac": "npm:create-hmac@1.1.4"
-			}
-		},
 		"npm:diffie-hellman@5.0.2": {
 			"map": {
 				"randombytes": "npm:randombytes@2.0.3",
@@ -1607,12 +1603,12 @@ SystemJS.config({
 		"npm:browserify-sign@4.0.0": {
 			"map": {
 				"create-hash": "npm:create-hash@1.1.2",
-				"inherits": "npm:inherits@2.0.1",
+				"inherits": "npm:inherits@2.0.3",
 				"create-hmac": "npm:create-hmac@1.1.4",
 				"bn.js": "npm:bn.js@4.11.6",
 				"browserify-rsa": "npm:browserify-rsa@4.0.1",
 				"parse-asn1": "npm:parse-asn1@5.0.0",
-				"elliptic": "npm:elliptic@6.3.1"
+				"elliptic": "npm:elliptic@6.3.2"
 			}
 		},
 		"npm:simplicial-complex@1.0.0": {
@@ -1623,10 +1619,10 @@ SystemJS.config({
 		},
 		"npm:create-hash@1.1.2": {
 			"map": {
-				"inherits": "npm:inherits@2.0.1",
+				"inherits": "npm:inherits@2.0.3",
 				"sha.js": "npm:sha.js@2.4.5",
 				"ripemd160": "npm:ripemd160@1.0.1",
-				"cipher-base": "npm:cipher-base@1.0.2"
+				"cipher-base": "npm:cipher-base@1.0.3"
 			}
 		},
 		"npm:sort-object@0.3.2": {
@@ -1655,7 +1651,7 @@ SystemJS.config({
 		"npm:create-ecdh@4.0.0": {
 			"map": {
 				"bn.js": "npm:bn.js@4.11.6",
-				"elliptic": "npm:elliptic@6.3.1"
+				"elliptic": "npm:elliptic@6.3.2"
 			}
 		},
 		"npm:circumradius@1.0.0": {
@@ -1687,7 +1683,7 @@ SystemJS.config({
 		},
 		"npm:create-hmac@1.1.4": {
 			"map": {
-				"inherits": "npm:inherits@2.0.1",
+				"inherits": "npm:inherits@2.0.3",
 				"create-hash": "npm:create-hash@1.1.2"
 			}
 		},
@@ -1921,8 +1917,8 @@ SystemJS.config({
 		"npm:browserify-aes@1.0.6": {
 			"map": {
 				"create-hash": "npm:create-hash@1.1.2",
-				"inherits": "npm:inherits@2.0.1",
-				"cipher-base": "npm:cipher-base@1.0.2",
+				"inherits": "npm:inherits@2.0.3",
+				"cipher-base": "npm:cipher-base@1.0.3",
 				"evp_bytestokey": "npm:evp_bytestokey@1.0.0",
 				"buffer-xor": "npm:buffer-xor@1.0.3"
 			}
@@ -1937,8 +1933,8 @@ SystemJS.config({
 		},
 		"npm:browserify-des@1.0.0": {
 			"map": {
-				"inherits": "npm:inherits@2.0.1",
-				"cipher-base": "npm:cipher-base@1.0.2",
+				"inherits": "npm:inherits@2.0.3",
+				"cipher-base": "npm:cipher-base@1.0.3",
 				"des.js": "npm:des.js@1.0.0"
 			}
 		},
@@ -1965,14 +1961,14 @@ SystemJS.config({
 				"browserify-aes": "npm:browserify-aes@1.0.6",
 				"create-hash": "npm:create-hash@1.1.2",
 				"evp_bytestokey": "npm:evp_bytestokey@1.0.0",
-				"pbkdf2": "npm:pbkdf2@3.0.4",
-				"asn1.js": "npm:asn1.js@4.8.0"
+				"pbkdf2": "npm:pbkdf2@3.0.9",
+				"asn1.js": "npm:asn1.js@4.8.1"
 			}
 		},
 		"npm:miller-rabin@4.0.0": {
 			"map": {
 				"bn.js": "npm:bn.js@4.11.6",
-				"brorand": "npm:brorand@1.0.5"
+				"brorand": "npm:brorand@1.0.6"
 			}
 		},
 		"npm:chalk@1.1.3": {
@@ -1992,19 +1988,6 @@ SystemJS.config({
 				"deep-is": "npm:deep-is@0.1.3",
 				"type-check": "npm:type-check@0.3.2",
 				"levn": "npm:levn@0.3.0"
-			}
-		},
-		"npm:elliptic@6.3.1": {
-			"map": {
-				"bn.js": "npm:bn.js@4.11.6",
-				"inherits": "npm:inherits@2.0.1",
-				"brorand": "npm:brorand@1.0.5",
-				"hash.js": "npm:hash.js@1.0.3"
-			}
-		},
-		"npm:cipher-base@1.0.2": {
-			"map": {
-				"inherits": "npm:inherits@2.0.1"
 			}
 		},
 		"npm:sntp@1.0.9": {
@@ -2139,13 +2122,6 @@ SystemJS.config({
 				"gl-vec4": "npm:gl-vec4@1.0.1"
 			}
 		},
-		"npm:asn1.js@4.8.0": {
-			"map": {
-				"bn.js": "npm:bn.js@4.11.6",
-				"inherits": "npm:inherits@2.0.1",
-				"minimalistic-assert": "npm:minimalistic-assert@1.0.0"
-			}
-		},
 		"npm:pinkie-promise@2.0.1": {
 			"map": {
 				"pinkie": "npm:pinkie@2.0.4"
@@ -2181,7 +2157,7 @@ SystemJS.config({
 		},
 		"npm:hash.js@1.0.3": {
 			"map": {
-				"inherits": "npm:inherits@2.0.1"
+				"inherits": "npm:inherits@2.0.3"
 			}
 		},
 		"npm:cliui@2.1.0": {
@@ -2205,7 +2181,7 @@ SystemJS.config({
 		},
 		"npm:des.js@1.0.0": {
 			"map": {
-				"inherits": "npm:inherits@2.0.1",
+				"inherits": "npm:inherits@2.0.3",
 				"minimalistic-assert": "npm:minimalistic-assert@1.0.0"
 			}
 		},
@@ -2279,17 +2255,6 @@ SystemJS.config({
 				"is-buffer": "npm:is-buffer@1.1.4"
 			}
 		},
-		"github:DD-DeCaF/decaf-frontend-module-pathways@master": {
-			"map": {
-				"jquery": "npm:jquery@3.1.0",
-				"escher-vis": "npm:escher-vis@1.4.4",
-				"d3": "npm:d3@3.5.6",
-				"css": "github:systemjs/plugin-css@0.1.27",
-				"decaf-common": "github:biosustain/decaf-frontend-common@master",
-				"angular-material": "github:angular/bower-material@1.1.0",
-				"twbs-bootstrap": "github:twbs/bootstrap@3.3.7"
-			}
-		},
 		"npm:escher-vis@1.4.4": {
 			"map": {
 				"d3": "npm:d3@3.5.17",
@@ -2310,7 +2275,7 @@ SystemJS.config({
 				"d3": "npm:d3@3.5.6",
 				"jquery": "npm:jquery@3.1.0",
 				"escher-vis": "npm:escher-vis@1.4.4",
-				"css": "github:systemjs/plugin-css@0.1.27",
+				"css": "github:systemjs/plugin-css@0.1.32",
 				"decaf-common": "github:biosustain/decaf-frontend-common@master",
 				"angular-material": "github:angular/bower-material@1.1.0",
 				"twbs-bootstrap": "github:twbs/bootstrap@3.3.7"
@@ -2318,7 +2283,7 @@ SystemJS.config({
 		},
 		"npm:readable-stream@2.1.5": {
 			"map": {
-				"inherits": "npm:inherits@2.0.1",
+				"inherits": "npm:inherits@2.0.3",
 				"buffer-shims": "npm:buffer-shims@1.0.0",
 				"core-util-is": "npm:core-util-is@1.0.2",
 				"isarray": "npm:isarray@1.0.0",
@@ -2330,16 +2295,69 @@ SystemJS.config({
 		"npm:buffer@4.9.1": {
 			"map": {
 				"isarray": "npm:isarray@1.0.0",
-				"base64-js": "npm:base64-js@1.1.2",
-				"ieee754": "npm:ieee754@1.1.6"
+				"base64-js": "npm:base64-js@1.2.0",
+				"ieee754": "npm:ieee754@1.1.8"
 			}
 		},
 		"github:angular/bower-material@1.1.0": {
 			"map": {
 				"angular": "github:angular/bower-angular@1.5.7",
-				"css": "github:systemjs/plugin-css@0.1.27",
+				"css": "github:systemjs/plugin-css@0.1.32",
 				"angular-aria": "github:angular/bower-angular-aria@1.5.8",
 				"angular-animate": "github:angular/bower-angular-animate@1.5.8"
+			}
+		},
+		"github:DD-DeCaF/pathway-vis@master": {
+			"map": {
+				"lodash": "npm:lodash@4.16.6",
+				"escher": "github:nkran/escher@master",
+				"d3": "npm:d3@3.5.14",
+				"decaf-common": "github:biosustain/decaf-frontend-common@master",
+				"css": "github:systemjs/plugin-css@0.1.32"
+			}
+		},
+		"github:nkran/escher@master": {
+			"map": {
+				"d3": "npm:d3@3.5.17",
+				"baconjs": "npm:baconjs@0.7.88",
+				"underscore": "npm:underscore@1.8.3",
+				"filesaverjs": "npm:filesaverjs@0.2.2",
+				"vkbeautify": "npm:vkbeautify@0.99.1",
+				"mousetrap": "npm:mousetrap@1.6.0"
+			}
+		},
+		"npm:stream-http@2.5.0": {
+			"map": {
+				"readable-stream": "npm:readable-stream@2.1.5",
+				"xtend": "npm:xtend@4.0.1",
+				"builtin-status-codes": "npm:builtin-status-codes@2.0.0",
+				"to-arraybuffer": "npm:to-arraybuffer@1.0.1",
+				"inherits": "npm:inherits@2.0.3"
+			}
+		},
+		"npm:pbkdf2@3.0.9": {
+			"map": {
+				"create-hmac": "npm:create-hmac@1.1.4"
+			}
+		},
+		"npm:elliptic@6.3.2": {
+			"map": {
+				"bn.js": "npm:bn.js@4.11.6",
+				"inherits": "npm:inherits@2.0.3",
+				"hash.js": "npm:hash.js@1.0.3",
+				"brorand": "npm:brorand@1.0.6"
+			}
+		},
+		"npm:cipher-base@1.0.3": {
+			"map": {
+				"inherits": "npm:inherits@2.0.3"
+			}
+		},
+		"npm:asn1.js@4.8.1": {
+			"map": {
+				"bn.js": "npm:bn.js@4.11.6",
+				"inherits": "npm:inherits@2.0.3",
+				"minimalistic-assert": "npm:minimalistic-assert@1.0.0"
 			}
 		}
 	}

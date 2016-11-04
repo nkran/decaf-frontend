@@ -1,4 +1,12 @@
 {
+	"github:DD-DeCaF/pathway-vis": {
+		"color": "#9fe2bf",
+		"navigation": {
+			"state": "pathwayvis",
+			"label": "Interactive model map",
+			"icon": "donut_large"
+		}
+	},
 	"github:DD-DeCaF/module-pathways": {
 		"color": "#baacc7",
 		"navigation": {
