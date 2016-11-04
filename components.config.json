@@ -1,6 +1,6 @@
 {
 	"github:DD-DeCaF/pathway-vis": {
-		"color": "#9fe2bf",
+		"color": "#60a380",
 		"navigation": {
 			"state": "pathwayvis",
 			"label": "Interactive model map",

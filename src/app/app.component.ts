@@ -151,7 +151,7 @@ app.component('app', {
 				</md-list>
 			</md-sidenav>
 			<div layout="column" flex id="content">
-				<md-toolbar class="component-color" ng-style="{'background-color': app.color || app.project.color || app.component.color}">
+				<md-toolbar class="component-color" ng-style="{'background-color': app.component.color || app.project.color || app.color }">
 					<div class="md-toolbar-tools" ui-view="toolbar">
 						<h1 flex>
 							{{app.component.navigation.label}}
