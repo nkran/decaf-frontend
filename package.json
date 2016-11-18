@@ -64,7 +64,7 @@
             "assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
             "browserify": "npm:browserify@^13.1.0",
             "buffer": "github:jspm/nodelibs-buffer@^0.2.0-alpha",
-            "child_process": "npm:jspm-nodelibs-child_process@^0.2.0",
+            "child_process": "github:jspm/nodelibs-child_process@^0.2.0-alpha",
             "constants": "github:jspm/nodelibs-constants@^0.2.0-alpha",
             "crypto": "github:jspm/nodelibs-crypto@^0.2.0-alpha",
             "dgram": "github:jspm/nodelibs-dgram@^0.2.0-alpha",
@@ -74,7 +74,7 @@
             "events": "github:jspm/nodelibs-events@^0.2.0-alpha",
             "fs": "github:jspm/nodelibs-fs@^0.2.0-alpha",
             "http": "github:jspm/nodelibs-http@^0.2.0-alpha",
-            "https": "npm:jspm-nodelibs-https@^0.2.0",
+            "https": "github:jspm/nodelibs-https@^0.2.0-alpha",
             "jodid25519": "npm:jodid25519@^1.0.0",
             "jsbn": "npm:jsbn@0.1",
             "module": "github:jspm/nodelibs-module@^0.2.0-alpha",
@@ -255,7 +255,7 @@
             "npm:jquery@3.1.1": {
                 "format": "amd"
             },
-            "npm:lodash@4.16.6": {
+            "npm:lodash@4.17.2": {
                 "map": {
                     "buffer": "@empty",
                     "process": "@empty"

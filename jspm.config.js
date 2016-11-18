@@ -35,7 +35,7 @@ SystemJS.config({
 		"assert": "github:jspm/nodelibs-assert@0.2.0-alpha",
 		"browserify": "npm:browserify@13.1.0",
 		"buffer": "github:jspm/nodelibs-buffer@0.2.0-alpha",
-		"child_process": "npm:jspm-nodelibs-child_process@0.2.0",
+		"child_process": "github:jspm/nodelibs-child_process@0.2.0-alpha",
 		"constants": "github:jspm/nodelibs-constants@0.2.0-alpha",
 		"crypto": "github:jspm/nodelibs-crypto@0.2.0-alpha",
 		"decaf-common": "github:biosustain/decaf-frontend-common@master",
@@ -50,7 +50,7 @@ SystemJS.config({
 		"events": "github:jspm/nodelibs-events@0.2.0-alpha",
 		"fs": "github:jspm/nodelibs-fs@0.2.0-alpha",
 		"http": "github:jspm/nodelibs-http@0.2.0-alpha",
-		"https": "npm:jspm-nodelibs-https@0.2.1",
+		"https": "github:jspm/nodelibs-https@0.2.0-alpha",
 		"jodid25519": "npm:jodid25519@1.0.2",
 		"jsbn": "npm:jsbn@0.1.0",
 		"module": "github:jspm/nodelibs-module@0.2.0-alpha",
@@ -438,7 +438,7 @@ SystemJS.config({
 		"npm:stream-browserify@2.0.1": {
 			"map": {
 				"inherits": "npm:inherits@2.0.3",
-				"readable-stream": "npm:readable-stream@2.1.5"
+				"readable-stream": "npm:readable-stream@2.2.2"
 			}
 		},
 		"npm:stream-http@2.3.1": {
@@ -1621,7 +1621,7 @@ SystemJS.config({
 		"npm:create-hash@1.1.2": {
 			"map": {
 				"inherits": "npm:inherits@2.0.3",
-				"sha.js": "npm:sha.js@2.4.5",
+				"sha.js": "npm:sha.js@2.4.8",
 				"ripemd160": "npm:ripemd160@1.0.1",
 				"cipher-base": "npm:cipher-base@1.0.3"
 			}
@@ -1963,7 +1963,7 @@ SystemJS.config({
 				"create-hash": "npm:create-hash@1.1.2",
 				"evp_bytestokey": "npm:evp_bytestokey@1.0.0",
 				"pbkdf2": "npm:pbkdf2@3.0.9",
-				"asn1.js": "npm:asn1.js@4.8.1"
+				"asn1.js": "npm:asn1.js@4.9.0"
 			}
 		},
 		"npm:miller-rabin@4.0.0": {
@@ -2293,7 +2293,7 @@ SystemJS.config({
 		},
 		"github:DD-DeCaF/pathway-vis@master": {
 			"map": {
-				"lodash": "npm:lodash@4.16.6",
+				"lodash": "npm:lodash@4.17.2",
 				"escher": "github:nkran/escher@master",
 				"d3": "npm:d3@3.5.14",
 				"decaf-common": "github:biosustain/decaf-frontend-common@master",
@@ -2303,7 +2303,7 @@ SystemJS.config({
 		"github:nkran/escher@master": {
 			"map": {
 				"d3": "npm:d3@3.5.17",
-				"baconjs": "npm:baconjs@0.7.88",
+				"baconjs": "npm:baconjs@0.7.89",
 				"underscore": "npm:underscore@1.8.3",
 				"filesaverjs": "npm:filesaverjs@0.2.2",
 				"vkbeautify": "npm:vkbeautify@0.99.1",
@@ -2312,7 +2312,7 @@ SystemJS.config({
 		},
 		"npm:stream-http@2.5.0": {
 			"map": {
-				"readable-stream": "npm:readable-stream@2.1.5",
+				"readable-stream": "npm:readable-stream@2.2.2",
 				"xtend": "npm:xtend@4.0.1",
 				"builtin-status-codes": "npm:builtin-status-codes@2.0.0",
 				"to-arraybuffer": "npm:to-arraybuffer@1.0.1",
@@ -2335,13 +2335,6 @@ SystemJS.config({
 		"npm:cipher-base@1.0.3": {
 			"map": {
 				"inherits": "npm:inherits@2.0.3"
-			}
-		},
-		"npm:asn1.js@4.8.1": {
-			"map": {
-				"bn.js": "npm:bn.js@4.11.6",
-				"inherits": "npm:inherits@2.0.3",
-				"minimalistic-assert": "npm:minimalistic-assert@1.0.0"
 			}
 		},
 		"npm:escher-vis@1.5.0": {
@@ -2371,6 +2364,29 @@ SystemJS.config({
 				"decaf-common": "github:biosustain/decaf-frontend-common@master",
 				"css": "github:systemjs/plugin-css@0.1.32",
 				"twbs-bootstrap": "github:twbs/bootstrap@3.3.7"
+			}
+		},
+		"npm:readable-stream@2.2.2": {
+			"map": {
+				"isarray": "npm:isarray@1.0.0",
+				"inherits": "npm:inherits@2.0.3",
+				"string_decoder": "npm:string_decoder@0.10.31",
+				"buffer-shims": "npm:buffer-shims@1.0.0",
+				"core-util-is": "npm:core-util-is@1.0.2",
+				"util-deprecate": "npm:util-deprecate@1.0.2",
+				"process-nextick-args": "npm:process-nextick-args@1.0.7"
+			}
+		},
+		"npm:sha.js@2.4.8": {
+			"map": {
+				"inherits": "npm:inherits@2.0.3"
+			}
+		},
+		"npm:asn1.js@4.9.0": {
+			"map": {
+				"bn.js": "npm:bn.js@4.11.6",
+				"inherits": "npm:inherits@2.0.3",
+				"minimalistic-assert": "npm:minimalistic-assert@1.0.0"
 			}
 		}
 	}
