@@ -2263,7 +2263,7 @@ SystemJS.config({
 		},
 		"github:DD-DeCaF/module-pathways@master": {
 			"map": {
-				"d3": "npm:d3@3.5.6",
+				"d3": "npm:d3@3.5.17",
 				"jquery": "npm:jquery@3.1.1",
 				"escher-vis": "npm:escher-vis@1.5.0",
 				"css": "github:systemjs/plugin-css@0.1.32",
@@ -2295,7 +2295,7 @@ SystemJS.config({
 			"map": {
 				"lodash": "npm:lodash@4.17.2",
 				"escher": "github:nkran/escher@master",
-				"d3": "npm:d3@3.5.14",
+				"d3": "npm:d3@3.5.17",
 				"decaf-common": "github:biosustain/decaf-frontend-common@master",
 				"css": "github:systemjs/plugin-css@0.1.32"
 			}
@@ -2343,7 +2343,7 @@ SystemJS.config({
 				"underscore": "npm:underscore@1.8.3",
 				"mousetrap": "npm:mousetrap@1.6.0",
 				"vkbeautify": "npm:vkbeautify@0.99.1",
-				"baconjs": "npm:baconjs@0.7.88",
+				"baconjs": "npm:baconjs@0.7.89",
 				"filesaverjs": "npm:filesaverjs@0.2.2"
 			}
 		},

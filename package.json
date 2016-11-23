@@ -212,14 +212,6 @@
                     "_stream_transform": "readable-stream/transform"
                 }
             },
-            "npm:d3@3.5.14": {
-                "meta": {
-                    "d3.js": {
-                        "exports": "d3",
-                        "format": "global"
-                    }
-                }
-            },
             "npm:d3@3.5.17": {
                 "meta": {
                     "d3.js": {
