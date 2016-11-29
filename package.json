@@ -110,7 +110,7 @@
                     }
                 }
             },
-            "github:angular/bower-angular-animate@1.5.8": {
+            "github:angular/bower-angular-animate@1.5.9": {
                 "main": "angular-animate",
                 "registry": "jspm",
                 "dependencies": {
@@ -125,7 +125,7 @@
                     }
                 }
             },
-            "github:angular/bower-angular-aria@1.5.8": {
+            "github:angular/bower-angular-aria@1.5.9": {
                 "main": "angular-aria",
                 "registry": "jspm",
                 "dependencies": {

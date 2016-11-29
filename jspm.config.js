@@ -1354,11 +1354,6 @@ SystemJS.config({
 				"atob-lite": "npm:atob-lite@1.0.0"
 			}
 		},
-		"github:angular/bower-angular-aria@1.5.8": {
-			"map": {
-				"angular": "github:angular/bower-angular@1.5.7"
-			}
-		},
 		"npm:simplify-planar-graph@2.0.1": {
 			"map": {
 				"simplicial-complex": "npm:simplicial-complex@0.3.3",
@@ -1477,11 +1472,6 @@ SystemJS.config({
 				"inherits": "npm:inherits@2.0.1",
 				"core-util-is": "npm:core-util-is@1.0.2",
 				"stream-browserify": "npm:stream-browserify@1.0.0"
-			}
-		},
-		"github:angular/bower-angular-animate@1.5.8": {
-			"map": {
-				"angular": "github:angular/bower-angular@1.5.7"
 			}
 		},
 		"npm:multi-stage-sourcemap@0.2.1": {
@@ -2297,7 +2287,8 @@ SystemJS.config({
 				"escher": "github:nkran/escher@master",
 				"d3": "npm:d3@3.5.17",
 				"decaf-common": "github:biosustain/decaf-frontend-common@master",
-				"css": "github:systemjs/plugin-css@0.1.32"
+				"css": "github:systemjs/plugin-css@0.1.32",
+				"jquery": "npm:jquery@3.1.1"
 			}
 		},
 		"github:nkran/escher@master": {
@@ -2351,8 +2342,8 @@ SystemJS.config({
 			"map": {
 				"angular": "github:angular/bower-angular@1.5.7",
 				"css": "github:systemjs/plugin-css@0.1.32",
-				"angular-aria": "github:angular/bower-angular-aria@1.5.8",
-				"angular-animate": "github:angular/bower-angular-animate@1.5.8"
+				"angular-aria": "github:angular/bower-angular-aria@1.5.9",
+				"angular-animate": "github:angular/bower-angular-animate@1.5.9"
 			}
 		},
 		"github:nkran/module-pathways@escher-service": {
@@ -2387,6 +2378,16 @@ SystemJS.config({
 				"bn.js": "npm:bn.js@4.11.6",
 				"inherits": "npm:inherits@2.0.3",
 				"minimalistic-assert": "npm:minimalistic-assert@1.0.0"
+			}
+		},
+		"github:angular/bower-angular-aria@1.5.9": {
+			"map": {
+				"angular": "github:angular/bower-angular@1.5.7"
+			}
+		},
+		"github:angular/bower-angular-animate@1.5.9": {
+			"map": {
+				"angular": "github:angular/bower-angular@1.5.7"
 			}
 		}
 	}
