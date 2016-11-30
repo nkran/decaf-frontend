@@ -1,6 +1,7 @@
 // Turn of WS TS inspection for the 'decaf-common' import.
 // noinspection TypeScriptCheckImport
 import {dirname} from 'decaf-common';
+// import Session from './session.component';
 import './login.component.css!';
 
 
@@ -14,7 +15,7 @@ login.config(function ($stateProvider) {
 			'root@': {
 				templateUrl: `${dirname(module.id)}/login.component.html`,
 				controller: LoginController,
-				controllerAs: 'home'
+				controllerAs: 'login'
 			}
 		}
 	});
@@ -22,7 +23,19 @@ login.config(function ($stateProvider) {
 
 
 class LoginController {
-	constructor() {}
+	public credentials: any;
+
+	constructor() {
+		this.credentials = {
+			username: '',
+			password: ''
+		};
+	}
+
+	public authenticate(form, credentials) : void {
+		console.log('here');
+	}
+
 }
 
 export default login;
