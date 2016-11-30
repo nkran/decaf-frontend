@@ -4,6 +4,7 @@
 		"angular": "registry:dt/angular#1.5.0+20160709055139",
 		"jasmine": "registry:dt/jasmine#2.2.0+20160621224255",
 		"jquery": "registry:dt/jquery#1.10.0+20160704162008",
+		"ng-file-upload": "registry:dt/ng-file-upload#0.0.0+20160928134715",
 		"node": "registry:dt/node#6.0.0+20160720070758",
 		"selenium-webdriver": "registry:dt/selenium-webdriver#2.44.0+20160317120654"
 	}

@@ -22,5 +22,13 @@
 			"label": "Theoretical Yields",
 			"icon": "group_work"
 		}
+	},
+	"github:DD-DeCaF/upload-frontend": {
+		"color": "#a3a3a3",
+		"navigation": {
+			"state": "upload",
+			"label": "Upload data",
+			"icon": "file_upload"
+		}
 	}
 }
