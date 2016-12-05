@@ -1,11 +1,15 @@
 // Turn of WS TS inspection for the 'decaf-common' import.
 // noinspection TypeScriptCheckImport
 import {dirname} from 'decaf-common';
-// import Session from './session.component';
+import 'angular-ui-router';
+import Session from './session.component';
 import './login.component.css!';
 
+console.log(Session.name);
 
-const login = angular.module('platform.login', []);
+const login = angular.module('platform.login', [
+	Session.name, 'ui.router'
+]);
 
 
 login.config(function ($stateProvider) {
@@ -25,17 +29,28 @@ login.config(function ($stateProvider) {
 class LoginController {
 	public credentials: any;
 
-	constructor() {
+	constructor(private Session, private $state) {
 		this.credentials = {
 			username: '',
 			password: ''
 		};
 	}
 
-	public authenticate(form, credentials) : void {
-		console.log('here');
+	public async authenticate(form, credentials) {
+		try {
+			await this.Session.authenticate(credentials);
+			this.$state.go('root.home');
+		} catch (invalidCredentials) {
+			form.password.$setValidity('auth', false);
+			form.$setPristine();
+		}
+	}
+
+	public logout() {
+		this.Session.logout();
 	}
 
 }
 
 export default login;
+

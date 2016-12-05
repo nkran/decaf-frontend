@@ -12,6 +12,7 @@ import {isProd} from './env';
 
 import home from './components/home/home.component';
 import login from './components/login/login.component';
+import ApiCallInterceptor from './components/login/interceptor.component';
 
 
 const CORE_COMPONENTS = [
@@ -51,6 +52,7 @@ app.config(function ($httpProvider, $compileProvider) {
 		// https://docs.angularjs.org/guide/production
 		$compileProvider.debugInfoEnabled(false);
 	}
+	$httpProvider.interceptors.push(ApiCallInterceptor.Factory);
 });
 
 

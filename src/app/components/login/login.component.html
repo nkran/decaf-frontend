@@ -52,6 +52,10 @@
                         ng-disabled="loginForm.$invalid || loginForm.$submitted"
                         ng-click="login.authenticate(loginForm, login.credentials)" class="md-primary md-raised">Login
                     </md-button>
+                    <md-button
+                        type="submit"
+                        ng-click="login.logout()" class="md-primary md-raised">Logout
+                    </md-button>
                 </div>
             </md-card-content>
         </md-card>
