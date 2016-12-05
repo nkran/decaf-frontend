@@ -5,9 +5,12 @@ const session = angular.module('session.services.api', ['ngStorage']);
 
 
 export class Session {
-	constructor(private $http, private $localStorage, private $rootScope) {
-	};
-
+	constructor(
+		private $http,
+		private $localStorage,
+		private $rootScope
+	) {};
+	
 	isAuthenticated() {
 		return this.expires > new Date();
 	};

@@ -1,68 +1,82 @@
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="utf-8">
-		<base href="/">
-		<meta http-equiv="x-ua-compatible" content="ie=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Platform</title>
-		<meta name="description" content="">
-		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<link href="./main.css" rel="stylesheet">
-		<style type="text/css">
-			[ng\:cloak],
-			[ng-cloak],
-			[data-ng-cloak],
-			[x-ng-cloak],
-			.ng-cloak,
-			.x-ng-cloak {
-				display: none !important;
-			}
-		</style>
-	</head>
-	<body layout="column" ng-cloak>
-		<app layout="column" flex>
-			<app-navigation>
-				<!-- This navigation is rendered in between the <project-nav> and the components nav -->
-				<!--<md-divider></md-divider>-->
-				<!--<md-list>-->
-					<!--<md-list-item ui-sref="root.home">-->
-						<!--<md-icon>home</md-icon>-->
-						<!--<p>Home</p>-->
-					<!--</md-list-item>-->
-				<!--</md-list>-->
-			</app-navigation>
-			<app-toolbar>
-				<!-- TODO: this should be a component that can be used by the external components -->
-				<md-menu ng-show="app.sharing.targets.length" md-position-mode="target-right target">
-					<md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
-						<md-icon>share</md-icon>
+<head>
+	<meta charset="utf-8">
+	<base href="/">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Platform</title>
+	<meta name="description" content="">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="./main.css" rel="stylesheet">
+	<style type="text/css">
+		[ng\:cloak],
+		[ng-cloak],
+		[data-ng-cloak],
+		[x-ng-cloak],
+		.ng-cloak,
+		.x-ng-cloak {
+			display: none !important;
+		}
+	</style>
+</head>
+<body layout="column" ng-cloak>
+<app layout="column" flex>
+	<app-navigation>
+		<!-- This navigation is rendered in between the <project-nav> and the components nav -->
+		<!--<md-divider></md-divider>-->
+		<!--<md-list>-->
+		<!--<md-list-item ui-sref="root.home">-->
+		<!--<md-icon>home</md-icon>-->
+		<!--<p>Home</p>-->
+		<!--</md-list-item>-->
+		<!--</md-list>-->
+	</app-navigation>
+	<app-toolbar>
+		<!-- TODO: this should be a component that can be used by the external components -->
+		<md-menu ng-show="app.sharing.targets.length" md-position-mode="target-right target">
+			<md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
+				<md-icon>share</md-icon>
+			</md-button>
+
+			<md-menu-content width="4">
+				<md-menu-item ng-repeat="target in app.sharing.targets">
+					<md-button ng-click="app.sharing.open(target.state, $event)">
+						<div layout="row">
+							<p flex>{{target.name}}</p>
+							<md-icon md-menu-align-target>share</md-icon>
+						</div>
 					</md-button>
+				</md-menu-item>
+			</md-menu-content>
+		</md-menu>
 
-					<md-menu-content width="4">
-						<md-menu-item ng-repeat="target in app.sharing.targets">
-							<md-button ng-click="app.sharing.open(target.state, $event)">
-								<div layout="row">
-									<p flex>{{target.name}}</p>
-									<md-icon md-menu-align-target>share</md-icon>
-								</div>
-							</md-button>
-						</md-menu-item>
-					</md-menu-content>
-				</md-menu>
-			</app-toolbar>
-		</app>
+		<md-menu>
+			<md-button aria-label="More" class="md-icon-button" ng-click="$mdOpenMenu()">
+				<md-icon>more_vert</md-icon>
+			</md-button>
+			<md-menu-content width="4">
+				<md-menu-item>
+					<md-button ng-click="logout()">
+						<md-icon>lock</md-icon>
+						Log Out
+					</md-button>
+				</md-menu-item>
+			</md-menu-content>
+		</md-menu>
+	</app-toolbar>
+</app>
 
-		<!-- ES6/Polyfills -->
-		<script src="jspm_packages/system.js"></script>
-		<script src="jspm.config.js"></script>
+<!-- ES6/Polyfills -->
+<script src="jspm_packages/system.js"></script>
+<script src="jspm.config.js"></script>
 
-		<!-- SystemJS -->
-		<script>
-			System.import('app/bootstrap').catch(
-				console.error.bind(console)
-			);
-		</script>
-	</body>
+<!-- SystemJS -->
+<script>
+	System.import('app/bootstrap').catch(
+		console.error.bind(console)
+	);
+</script>
+</body>
 </html>

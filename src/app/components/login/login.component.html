@@ -22,7 +22,7 @@
                            type="text"
                            required>
 
-                    <div ng-messages="loginForm.username.$error" ng-if="loginForm.username.$touched">
+                    <div ng-messages="loginForm.username.$error" ng-if="loginForm.username.$touched && loginForm.username.$invalid">
                         <div ng-message="required">You <b>must</b> specify a username.</div>
                     </div>
                 </md-input-container>
@@ -39,7 +39,7 @@
                            type="password"
                            required>
 
-                    <div ng-messages="loginForm.password.$error" ng-if="loginForm.password.$touched">
+                    <div ng-messages="loginForm.password.$error" ng-if="loginForm.password.$touched && loginForm.password.$invalid">
                         <div ng-message="required">You <b>must</b> specify a password.</div>
                         <div ng-message="auth">Your username or password are incorrect.</div>
                     </div>

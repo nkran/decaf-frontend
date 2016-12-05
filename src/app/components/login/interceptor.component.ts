@@ -9,9 +9,9 @@ class ApiCallInterceptor implements angular.IInterceptor {
 	public request = (requestSuccess): angular.IPromise<any> => {
 		let $localStorage = this.$injector.get('$localStorage');
 		if ($localStorage.sessionJWT) {
-			console.log(requestSuccess.headers);
 			requestSuccess.headers.Authorization = `Bearer ${$localStorage.sessionJWT}`;
 		}
+		console.log(requestSuccess);
 		return requestSuccess;
 	};
 

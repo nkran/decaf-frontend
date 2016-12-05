@@ -41,6 +41,7 @@ class LoginController {
 			await this.Session.authenticate(credentials);
 			this.$state.go('root.home');
 		} catch (invalidCredentials) {
+			console.log('invalid credentials');
 			form.password.$setValidity('auth', false);
 			form.$setPristine();
 		}

@@ -62,6 +62,13 @@ app.config(function ($mdThemingProvider) {
 		.theme('default')
 		.primaryPalette('blue-grey')
 		.accentPalette('grey');
+
+	$mdThemingProvider
+		.theme('fullscreen')
+		.primaryPalette('blue')
+		.accentPalette('yellow')
+		.backgroundPalette('blue-grey')
+		.dark();
 });
 
 // Router config
