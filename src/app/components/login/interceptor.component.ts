@@ -11,7 +11,6 @@ class ApiCallInterceptor implements angular.IInterceptor {
 		if ($localStorage.sessionJWT) {
 			requestSuccess.headers.Authorization = `Bearer ${$localStorage.sessionJWT}`;
 		}
-		console.log(requestSuccess);
 		return requestSuccess;
 	};
 

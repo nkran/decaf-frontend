@@ -45,6 +45,7 @@ The file is a JSON with the following schema:
 Each of the above configuration properties should be configured as it follows:
 * `{color}` (***Optional***) - Sets the color of the sidebar project navigation and the toolbar, alternatively this can also be set programmatically from within the component using `config.set('color', '<color>')`.
 * `{isProjectType}` (***Optional***) - If set to `true`, the component will show up in the project navigation and it will be available to every project as a subroute of the project.
+* `{authRequired}` (***Optional***) - If set to `true`, the component will not be shown for users who are not logged in.
 * `{navigation.state}` (***Mandatory***) - Sets the route at which the component is available.
 If the component is not of project type, it will be available at the root, otherwise it will be a subroute of each of the projects.
 Usually you set this to the root state that you configured within the module via `platformProvider.state()`.

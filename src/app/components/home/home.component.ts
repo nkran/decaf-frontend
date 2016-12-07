@@ -2,9 +2,10 @@
 // noinspection TypeScriptCheckImport
 import {dirname} from 'decaf-common';
 import './home.component.css!';
+import 'gsklee/ngStorage';
 
 
-const home = angular.module('platform.home', []);
+const home = angular.module('platform.home', ['ngStorage']);
 
 
 home.config(function ($stateProvider) {
@@ -21,6 +22,14 @@ home.config(function ($stateProvider) {
 });
 
 
-class HomeController {}
+class HomeController {
+	constructor(
+		private $localStorage
+	) {};
+
+	loggedIn() {
+		return Boolean(this.$localStorage.user);
+	}
+}
 
 export default home;

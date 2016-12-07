@@ -5,7 +5,6 @@ import 'angular-ui-router';
 import Session from './session.component';
 import './login.component.css!';
 
-console.log(Session.name);
 
 const login = angular.module('platform.login', [
 	Session.name, 'ui.router'
@@ -29,7 +28,7 @@ login.config(function ($stateProvider) {
 class LoginController {
 	public credentials: any;
 
-	constructor(private Session, private $state) {
+	constructor(private Session, private $location) {
 		this.credentials = {
 			username: '',
 			password: ''
@@ -39,7 +38,7 @@ class LoginController {
 	public async authenticate(form, credentials) {
 		try {
 			await this.Session.authenticate(credentials);
-			this.$state.go('root.home');
+			this.$location.url('/');
 		} catch (invalidCredentials) {
 			console.log('invalid credentials');
 			form.password.$setValidity('auth', false);

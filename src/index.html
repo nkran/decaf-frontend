@@ -52,19 +52,23 @@
 			</md-menu-content>
 		</md-menu>
 
-		<md-menu>
-			<md-button aria-label="More" class="md-icon-button" ng-click="$mdOpenMenu()">
-				<md-icon>more_vert</md-icon>
+		<div ng-if="app.currentUser()">
+			{{ app.currentUser().display_name }}
+			<md-button ng-click="app.logout()">
+				<md-icon>lock</md-icon>
+				Log Out
 			</md-button>
-			<md-menu-content width="4">
-				<md-menu-item>
-					<md-button ng-click="logout()">
-						<md-icon>lock</md-icon>
-						Log Out
-					</md-button>
-				</md-menu-item>
-			</md-menu-content>
-		</md-menu>
+			</md-menu>
+		</div>
+		<div ng-if="!app.currentUser()">
+			<a href="/#/login">
+				<md-button>
+					<md-icon>lock</md-icon>
+					Log In
+				</md-button>
+			</a>
+			</md-menu>
+		</div>
 	</app-toolbar>
 </app>
 

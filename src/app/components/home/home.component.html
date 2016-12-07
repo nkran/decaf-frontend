@@ -2,7 +2,8 @@
 	<div>
 		<h2 class="md-title">Data-Driven Design of Cell Factories and Communities</h2>
 
-		<p>Welcome to DD-DeCaF platform!</p>
-		<p>In order to be able to upload your own data please <a href="/#/login">log in</a></p>
+		<p>Welcome to DD-DeCaF platform - the collection of bioinformatics services helping to design cells and microbial communities.</p>
+		<p ng-if="!home.loggedIn()">In order to be able to upload your own experimental data please <a href="/#/login">log in</a></p>
+		<p ng-if="home.loggedIn()">Previously uploaded data can be found <a href="https://iloop.dd-decaf.eu/">here</a></p>
 	</div>
 </div>

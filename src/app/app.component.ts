@@ -1,5 +1,6 @@
 import 'angular-material';
 import 'angular-ui-router';
+import 'angular-route';
 
 // Turn of WS TS inspection for the 'decaf-common' import.
 // noinspection TypeScriptCheckImport
@@ -13,6 +14,7 @@ import {isProd} from './env';
 import home from './components/home/home.component';
 import login from './components/login/login.component';
 import ApiCallInterceptor from './components/login/interceptor.component';
+import Session from './components/login/session.component';
 
 
 const CORE_COMPONENTS = [
@@ -20,6 +22,7 @@ const CORE_COMPONENTS = [
 	'ngAnimate',
 	'ngAria',
 	'ngMaterial',
+	'ngRoute',
 	// 3rd Party
 	'ui.router'
 ];
@@ -92,7 +95,7 @@ class AppController {
 	components: any[] = COMPONENTS_CONFIG;
 	component: any = null;
 
-	constructor($rootScope, $window, private config: Config) {
+	constructor($rootScope, $window, private config: Config, private Session, private $route) {
 		// Set title
 		// 1. Set document title
 		// 2. Set toolbar title
@@ -126,7 +129,12 @@ class AppController {
 	}
 
 	componentsWithoutProjects() {
-		return this.components.filter(({isProjectType}) => !isProjectType);
+		return this.components.filter(({isProjectType, authRequred}) =>
+			!isProjectType &&
+			(
+				!authRequred || (authRequred && Boolean(this.Session.currentUser))
+			)
+		);
 	}
 
 	$onInit() {
@@ -134,6 +142,15 @@ class AppController {
 			isProd() ? 'production' : 'dev'
 		} mode.`);
 	}
+
+	logout() {
+		this.Session.logout();
+		this.$route.reload();
+	};
+
+	currentUser() {
+		return this.Session.currentUser;
+	};
 }
 
 app.component('app', {
@@ -153,9 +170,21 @@ app.component('app', {
 				<div ui-view="navigation"></div>
 				<md-divider ng-if="app.components.length"></md-divider>
 				<md-list>
+					<md-list-item ui-sref="root.home">
+						<md-icon md-menu-align-target>home</md-icon>
+						<p>Home</p>
+					</md-list-item>
+					<md-divider></md-divider>
+					<md-subheader class="md-no-sticky">Modules</md-subheader>
 					<md-list-item ng-repeat="component in ::app.componentsWithoutProjects()" ui-sref="{{component.navigation.state}}">
 						<md-icon>{{ component.navigation.icon }}</md-icon>
 						<p>{{ component.navigation.label }}</p>
+					</md-list-item>
+					<md-divider></md-divider>
+					<md-subheader class="md-no-sticky">External</md-subheader>
+					<md-list-item href="https://iloop.dd-decaf.eu/">
+						<md-icon md-svg-icon="/images/beaker-outline.svg"></md-icon>
+						<p>ILoop</p>
 					</md-list-item>
 				</md-list>
 			</md-sidenav>
