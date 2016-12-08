@@ -1,18 +1,19 @@
 {
+	"github:DD-DeCaF/upload-frontend": {
+		"color": "#a3a3a3",
+		"navigation": {
+			"state": "upload",
+			"label": "Upload data",
+			"icon": "file_upload"
+		},
+		"authRequired": "true"
+	},
 	"github:DD-DeCaF/pathway-vis": {
 		"color": "#60a380",
 		"navigation": {
 			"state": "pathwayvis",
 			"label": "Interactive Model Map",
 			"icon": "donut_large"
-		}
-	},
-	"github:DD-DeCaF/module-pathways": {
-		"color": "#baacc7",
-		"navigation": {
-			"state": "pathways",
-			"label": "Heterologous Pathways",
-			"icon": "timeline"
 		}
 	},
 	"github:DD-DeCaF/module-theoretical-yield": {
@@ -23,12 +24,12 @@
 			"icon": "group_work"
 		}
 	},
-	"github:DD-DeCaF/upload-frontend": {
-		"color": "#a3a3a3",
+	"github:DD-DeCaF/module-pathways": {
+		"color": "#baacc7",
 		"navigation": {
-			"state": "upload",
-			"label": "Upload data",
-			"icon": "file_upload"
+			"state": "pathways",
+			"label": "Heterologous Pathways",
+			"icon": "timeline"
 		}
 	}
 }

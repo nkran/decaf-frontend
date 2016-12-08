@@ -53,8 +53,10 @@
             "DD-DeCaF/module-theoretical-yield": "github:DD-DeCaF/module-theoretical-yield@master",
             "DD-DeCaF/pathway-vis": "github:DD-DeCaF/pathway-vis@master",
             "DD-DeCaF/upload-frontend": "github:DD-DeCaF/upload-frontend@master",
+            "angular-route": "npm:angular-route@^1.5.9",
             "css": "github:systemjs/plugin-css@^0.1.23",
             "decaf-common": "github:biosustain/decaf-frontend-common@master",
+            "gsklee/ngStorage": "github:gsklee/ngStorage@^0.3.0",
             "ng-file-upload": "npm:ng-file-upload@^12.2.13",
             "nkran/module-pathways": "github:nkran/module-pathways@escher-service"
         },

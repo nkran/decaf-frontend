@@ -29,6 +29,7 @@ SystemJS.config({
 		"npm:*.json"
 	],
 	map: {
+		"angular-route": "npm:angular-route@1.5.9",
 		"DD-DeCaF/upload-frontend": "github:DD-DeCaF/upload-frontend@master",
 		"DD-DeCaF/pathway-vis": "github:DD-DeCaF/pathway-vis@master",
 		"DD-DeCaF/module-pathways": "github:DD-DeCaF/module-pathways@master",
@@ -50,6 +51,7 @@ SystemJS.config({
 		"ecc-jsbn": "npm:ecc-jsbn@0.1.1",
 		"events": "npm:jspm-nodelibs-events@0.2.0",
 		"fs": "npm:jspm-nodelibs-fs@0.2.0",
+		"gsklee/ngStorage": "github:gsklee/ngStorage@0.3.11",
 		"http": "npm:jspm-nodelibs-http@0.2.0",
 		"https": "npm:jspm-nodelibs-https@0.2.0",
 		"jodid25519": "npm:jodid25519@1.0.2",

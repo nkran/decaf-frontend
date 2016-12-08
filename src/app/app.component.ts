@@ -95,7 +95,7 @@ class AppController {
 	components: any[] = COMPONENTS_CONFIG;
 	component: any = null;
 
-	constructor($rootScope, $window, private config: Config, private Session, private $route) {
+	constructor($rootScope, private $window, private config: Config, private Session) {
 		// Set title
 		// 1. Set document title
 		// 2. Set toolbar title
@@ -129,10 +129,10 @@ class AppController {
 	}
 
 	componentsWithoutProjects() {
-		return this.components.filter(({isProjectType, authRequred}) =>
+		return this.components.filter(({isProjectType, authRequired}) =>
 			!isProjectType &&
 			(
-				!authRequred || (authRequred && Boolean(this.Session.currentUser))
+				!authRequired || (authRequired && Boolean(this.Session.currentUser))
 			)
 		);
 	}
@@ -145,7 +145,7 @@ class AppController {
 
 	logout() {
 		this.Session.logout();
-		this.$route.reload();
+		this.$window.location.reload();
 	};
 
 	currentUser() {
