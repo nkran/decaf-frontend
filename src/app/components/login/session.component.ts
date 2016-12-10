@@ -3,7 +3,9 @@ import 'gsklee/ngStorage';
 
 const session = angular.module('session.services.api', ['ngStorage']);
 
+
 const API_ROOT = 'https://iloop.dd-decaf.eu/api';
+const BIOSUSTAIN_API_ROOT = 'https://iloop.biosustain.dtu.dk/api';
 
 export class Session {
 
@@ -35,11 +37,15 @@ export class Session {
 	};
 
 	authenticate(credentials) {
-		return this.$http.post(API_ROOT + '/auth', credentials)
+		let apiRoot = API_ROOT;
+		if (this.$location.host().includes('cfb')) {
+			apiRoot = BIOSUSTAIN_API_ROOT;
+		}
+		return this.$http.post(apiRoot + '/auth', credentials)
 			.then((response) => {
 				this.$localStorage.sessionJWT = response.data.token;
 				this.$rootScope.$broadcast('session:login');
-				this.$http.get(API_ROOT + '/user/me').then((response) => {
+				this.$http.get(apiRoot + '/user/me').then((response) => {
 					this.$localStorage.user = response.data;
 				});
 			});
