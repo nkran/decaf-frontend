@@ -29,6 +29,7 @@ SystemJS.config({
 		"npm:*.json"
 	],
 	map: {
+		"angular-toastr": "github:Foxandxss/angular-toastr@2.1.1",
 		"DD-DeCaF/upload-frontend": "github:DD-DeCaF/upload-frontend@master",
 		"DD-DeCaF/pathway-vis": "github:DD-DeCaF/pathway-vis@master",
 		"DD-DeCaF/module-pathways": "github:DD-DeCaF/module-pathways@master",

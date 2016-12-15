@@ -1,5 +1,6 @@
 import 'angular-material';
 import 'angular-ui-router';
+import 'angular-toastr';
 
 // Turn of WS TS inspection for the 'decaf-common' import.
 // noinspection TypeScriptCheckImport
@@ -20,7 +21,8 @@ const CORE_COMPONENTS = [
 	'ngAria',
 	'ngMaterial',
 	// 3rd Party
-	'ui.router'
+	'ui.router',
+	'toastr'
 ];
 
 const COMMON = [
@@ -83,7 +85,7 @@ class AppController {
 	components: any[] = COMPONENTS_CONFIG;
 	component: any = null;
 
-	constructor($rootScope, $window, private config: Config) {
+	constructor($rootScope, $window, private config: Config, toastr: angular.toastr.IToastrService) {
 		// Set title
 		// 1. Set document title
 		// 2. Set toolbar title
@@ -107,6 +109,17 @@ class AppController {
 				config.set('componentConfig', null);
 			}
 		});
+
+		const notification = `
+			It is still early days for DD-DeCaF so expect limited functionality and frequent
+			changes but you are very much welcome to look around and try things out!`;
+
+        toastr.info(notification, '', {
+            closeButton: true,
+            timeOut: 0,
+            extendedTimeOut: 0
+        });
+
 	}
 
 	// Update color from config
